@@ -46,10 +46,47 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        var region = MKCoordinateRegion()
         
-        print(center)
-        self.MapView.setRegion(region, animated: true)
+        
+        //Implementing a smooth zoom in for fun with delays
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
+            self.MapView.setRegion(region, animated: true)
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(6), execute: {
+            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15))
+            self.MapView.setRegion(region, animated: true)
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(9), execute: {
+            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 8, longitudeDelta: 8))
+            self.MapView.setRegion(region, animated: true)
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(12), execute: {
+            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4, longitudeDelta: 4))
+            self.MapView.setRegion(region, animated: true)
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(15), execute: {
+            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+            self.MapView.setRegion(region, animated: true)
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(18), execute: {
+            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+            self.MapView.setRegion(region, animated: true)
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(21), execute: {
+            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            self.MapView.setRegion(region, animated: true)
+        })
+        
+        
+        
         
         self.locationManager.stopUpdatingLocation()
         
