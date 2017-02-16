@@ -21,17 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="v3c-k9-FQT">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="v3c-k9-FQT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="v3c-k9-FQT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="KJA-rv-A7Q"/>
-                            <constraint firstItem="v3c-k9-FQT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="k5Z-As-p5z"/>
-                            <constraint firstAttribute="trailing" secondItem="v3c-k9-FQT" secondAttribute="trailing" id="wH0-SQ-cfS"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="v3c-k9-FQT" secondAttribute="bottom" id="wUP-QX-Rk7"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Current Location" id="F3X-VM-z3M"/>
                     <connections>
@@ -45,6 +40,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dc2-xC-fWS">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9NP-YS-dT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eNU-zI-3jl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9vq-wm-oQZ">
@@ -56,7 +52,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fXV-a1-9Hw"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9NP-YS-dT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="777.66116941529242"/>
         </scene>
