@@ -44,12 +44,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         let location = locations.last
         
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.latitude)
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
         
         print(center)
-        //self.MapView.setRegion(region, animated: true)
+        self.MapView.setRegion(region, animated: true)
         
         self.locationManager.stopUpdatingLocation()
         
