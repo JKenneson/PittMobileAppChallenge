@@ -129,7 +129,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         self.firstLocation = initialLocation
         
-        let center = CLLocationCoordinate2D(latitude: locationToZoom.coordinate.latitude, longitude: locationToZoom.coordinate.longitude)   //Find the center
+        let center = CLLocationCoordinate2D(latitude: initialLocation.coordinate.latitude, longitude: initialLocation.coordinate.longitude)   //Find the center
         var region = MKCoordinateRegion()
         
         //Zoom into the location of the user with a radius of .01
