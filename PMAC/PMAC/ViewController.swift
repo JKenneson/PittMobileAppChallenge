@@ -12,24 +12,24 @@ import CoreLocation
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
+    //MARK: IBOutlet Declarations
     @IBOutlet weak var MapView: MKMapView!
     
+    //MARK: Global variable declarations
     let locationManager = CLLocationManager()
-    
+    var isFirstLoad = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.locationManager.delegate = self
-        
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
         self.locationManager.requestWhenInUseAuthorization()
-        
         self.locationManager.startUpdatingLocation()
-        
+
         self.MapView.showsUserLocation = true
         
+        isFirstLoad = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,62 +37,58 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    
     //MARK: Location Delegate Methods
     
     
+    
+    /// Called every time a location gets updated in the location manager, the locations are
+    /// stored in a CLLocation array with the newest location tacked onto the end
+    ///
+    /// - Parameters:
+    ///   - manager: The CLLocationManager that is handling the location
+    ///   - locations: The location array of all locations seen by this manager
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last
         
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        if (isFirstLoad) {     //First time through the loop, zoom to the user's location
+            initialZoomToPosition(locationToZoom: location!)
+        }
         
-        var region = MKCoordinateRegion()
+        print (locations.count)
         
-        
-        //Implementing a smooth zoom in for fun with delays
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
-            self.MapView.setRegion(region, animated: true)
-        })
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(6), execute: {
-            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15))
-            self.MapView.setRegion(region, animated: true)
-        })
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(9), execute: {
-            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 8, longitudeDelta: 8))
-            self.MapView.setRegion(region, animated: true)
-        })
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(12), execute: {
-            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 4, longitudeDelta: 4))
-            self.MapView.setRegion(region, animated: true)
-        })
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(15), execute: {
-            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
-            self.MapView.setRegion(region, animated: true)
-        })
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(18), execute: {
-            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-            self.MapView.setRegion(region, animated: true)
-        })
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(21), execute: {
-            region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            self.MapView.setRegion(region, animated: true)
-        })
-        
-        
-        
-        
-        self.locationManager.stopUpdatingLocation()
-        
+        //Option to stop updating location below
+        //self.locationManager.stopUpdatingLocation()
     }
     
     
+    
+    /// Initially, the map will zoom into the location of the user, 
+    /// this can be animated or non-animated by changing the animate parameter to true/false respectively
+    ///
+    /// - Parameter locationToZoom: A CLLocation that will be the center of the map screen when we zoom in
+    func initialZoomToPosition(locationToZoom: CLLocation)  {
+        let center = CLLocationCoordinate2D(latitude: locationToZoom.coordinate.latitude, longitude: locationToZoom.coordinate.longitude)   //Find the center
+        
+        var region = MKCoordinateRegion()
+        
+        //Zoom into the location of the user with a radius of 1
+        region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.MapView.setRegion(region, animated: false)  //Change whether or not to be animated
+        
+        isFirstLoad = false
+    }
+    
+    
+    
+    /// Handling the errors from the location manager
+    ///
+    /// - Parameters:
+    ///   - manager: CLLocationManager that is handling the location
+    ///   - error: The error received by this manager
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Errors: " + error.localizedDescription)
     }
