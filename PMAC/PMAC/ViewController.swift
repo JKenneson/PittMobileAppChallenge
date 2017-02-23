@@ -19,13 +19,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var freeRoamButton: UIButton!
     
     //MARK: Global variable declarations
-    let locationManager = CLLocationManager()
-    var locations: [CLLocation] = []    //To track all locations the user has gone on this run
-    var polyline: MKPolyline?           //The collection of locations represented as a polyline
-    var isFirstLoad = true              //If this is the first time into the program
-    var countForAccuracy = 0            //Will start the counter at 0 and not start tracking data until 5 positions read in
-    var isTrackingPosition = true       //Default to tracking the position only
-    var isTrackingRoute = false
+    let locationManager = CLLocationManager()   //Tracks the user's location and returns a CLLocation object
+    var locations: [CLLocation] = []            //To track all locations the user has gone on this run
+    var polyline: MKPolyline?                   //The collection of locations represented as a polyline
+    
+    var totalDistance: Double = 0               //Tracking the total distance the user has gone
+    
+    var isFirstLoad = true                      //If this is the first time into the program
+    var isTrackingPosition = true               //Default to tracking the position only
+    var isTrackingRoute = false                 //Show the entire route on the map
     
     //Called when the view loads, setup for the Location Manager and Map View
     override func viewDidLoad() {
@@ -127,14 +129,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             trackPosition(locationToZoom: location!, shouldAnimate: false)
         }
         else if (self.isTrackingPosition) {    //Follow the user by setting the map region to their current position
+            self.totalDistance += location!.distance(from: self.locations.last!)   //Find the distance from the last location to this new one
             self.locations.append(location!)
             trackPosition(locationToZoom: location!, shouldAnimate: true)
         }
         else if (self.isTrackingRoute) {       //Track the user's route; set the map region to the entire span of the route
+            self.totalDistance += location!.distance(from: self.locations.last!)   //Find the distance from the last location to this new one
             self.locations.append(location!)
             trackRoute()
         }
         else {                          //Allow the user to move around the map
+            self.totalDistance += location!.distance(from: self.locations.last!)   //Find the distance from the last location to this new one
             self.locations.append(location!)
         }
         
@@ -142,7 +147,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             drawRoute()
         }
         
-        
+        print("Total Distance \(totalDistance)")
         //Option to stop updating location below
         //self.locationManager.stopUpdatingLocation()
     }
