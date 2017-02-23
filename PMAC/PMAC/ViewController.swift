@@ -19,9 +19,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     //MARK: Global variable declarations
     let locationManager = CLLocationManager()
-    var firstLocation: CLLocation? //To track our initial location
+    var locations: [CLLocation] = []    //To track all locations the user has gone on this run
     var isFirstLoad = true
-    var isTrackingPosition = true     //Default to tracking the position only
+    var countForAccuracy = 0            //Will start the counter at 0 and not start tracking data until 5 positions read in
+    var isTrackingPosition = true       //Default to tracking the position only
     var isTrackingRoute = false
     
     override func viewDidLoad() {
@@ -68,7 +69,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     
     
-    //MARK: Location Delegate Methods
+    //MARK: Location Update Methods
     
     
     /// Called every time a location gets updated in the location manager, the locations are
@@ -77,26 +78,59 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     /// - Parameters:
     ///   - manager: The CLLocationManager that is handling the location
     ///   - locations: The location array of all locations seen by this manager
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations readLocations: [CLLocation]) {
         
-        let location = locations.last
+        let location = readLocations.last
         
-        if(self.isFirstLoad) {               //Save the initial location
-            self.firstLoad(initialLocation: location!)
+        if(self.isFirstLoad) {                  //Don't save initial data while calibrating
+            if(countForAccuracy > 3) {
+                self.isFirstLoad = false
+                self.locations.append(location!)    //Save the first position
+            }
+            countForAccuracy += 1
         }
         else if (self.isTrackingPosition) {    //Follow the user by setting the map region to their current position
+            self.locations.append(location!)
             self.trackPosition(locationToZoom: location!)
         }
-        else if (self.isTrackingRoute) {       //Track the user's route by setting the map region to the entire span of the route
-        
+        else if (self.isTrackingRoute) {       //Track the user's route; set the map region to the entire span of the route
+            self.locations.append(location!)
+            
         }
         else {                          //Allow the user to move around the map
-            //For now, do nothing
-
+            self.locations.append(location!)
+        }
+        
+        if(self.locations.count >= 2) { //If we have at least 2 points, start drawing the route
+            drawRoute()
         }
         
         //Option to stop updating location below
         //self.locationManager.stopUpdatingLocation()
+    }
+    
+    
+    func drawRoute() {
+        var coordinates = self.locations.map({ (location: CLLocation!) -> CLLocationCoordinate2D in
+            return location.coordinate
+        })
+        
+        
+        let polyline = MKPolyline(coordinates: &coordinates, count: locations.count)
+        self.mapView.add(polyline)
+    }
+    
+    
+    func mapVieW(mapView: MKMapView!, viewForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        
+        if (overlay is MKPolyline) {
+            let pr = MKPolylineRenderer(overlay: overlay);
+            pr.strokeColor = UIColor.red.withAlphaComponent(0.5);
+            pr.lineWidth = 5;
+            return pr;
+        }
+        
+        return MKPolylineRenderer()
     }
     
     
@@ -121,24 +155,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
     }
     
-    
-    /// Initially, the map will locate the user and save their starting point as firstLocation
-    ///
-    /// - Parameter locationToZoom: A CLLocation that will be the center of the map screen when we zoom in
-    func firstLoad(initialLocation: CLLocation)  {
-        
-        self.firstLocation = initialLocation
-        
-        let center = CLLocationCoordinate2D(latitude: initialLocation.coordinate.latitude, longitude: initialLocation.coordinate.longitude)   //Find the center
-        var region = MKCoordinateRegion()
-        
-        //Zoom into the location of the user with a radius of .01
-        region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        self.mapView.setRegion(region, animated: false)  //Change whether or not to be animated
-        
-        self.isFirstLoad = false
-    
-    }
+
     
     
     /// Handling the errors from the location manager
