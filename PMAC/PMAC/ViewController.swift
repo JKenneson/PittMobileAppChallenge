@@ -16,6 +16,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var entireRouteButton: UIButton!
     @IBOutlet weak var currentPositionButton: UIButton!
+    @IBOutlet weak var freeRoamButton: UIButton!
     
     //MARK: Global variable declarations
     let locationManager = CLLocationManager()
@@ -26,6 +27,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var isTrackingPosition = true       //Default to tracking the position only
     var isTrackingRoute = false
     
+    //Called when the view loads, setup for the Location Manager and Map View
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +46,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     
-    //MARK: Position and Route Button Methods
+    //MARK: Position, Route, annd Free Roam Button Methods
     
     
     /// Will switch the map view to tracking the entire route in the map region
@@ -65,6 +67,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.isTrackingPosition = true
         self.isTrackingRoute = false
     }
+    
+    @IBAction func trackFreeRoamButton(_ sender: Any) {
+        print("Free Roam")
+        self.isTrackingRoute = false
+        self.isTrackingPosition = false
+    }
+    
+    
     
     //MARK: Map View Methods
     

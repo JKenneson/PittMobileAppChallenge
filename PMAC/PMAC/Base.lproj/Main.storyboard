@@ -40,12 +40,21 @@
                                     <action selector="trackEntireRouteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hD6-Xm-V88"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKW-mT-2Iu">
+                                <rect key="frame" x="285" y="517" width="74" height="30"/>
+                                <state key="normal" title="Free Roam"/>
+                                <connections>
+                                    <action selector="trackFreeRoamButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rAw-Fj-Iun"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mL5-iu-yk7" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="3Hm-x2-TAx"/>
                             <constraint firstItem="d3I-92-zeT" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="HUH-e0-JE7"/>
+                            <constraint firstItem="hKW-mT-2Iu" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Iax-ao-hBu"/>
                             <constraint firstItem="mL5-iu-yk7" firstAttribute="top" secondItem="d3I-92-zeT" secondAttribute="bottom" constant="20" id="kLn-Zt-1yM"/>
+                            <constraint firstItem="d3I-92-zeT" firstAttribute="top" secondItem="hKW-mT-2Iu" secondAttribute="bottom" constant="20" id="oCz-CW-byc"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mL5-iu-yk7" secondAttribute="bottom" constant="20" id="teV-Gg-ZKV"/>
                         </constraints>
                     </view>
@@ -53,6 +62,7 @@
                     <connections>
                         <outlet property="currentPositionButton" destination="mL5-iu-yk7" id="P0C-UP-sEG"/>
                         <outlet property="entireRouteButton" destination="d3I-92-zeT" id="qHY-fQ-yDI"/>
+                        <outlet property="freeRoamButton" destination="hKW-mT-2Iu" id="7Yt-Lx-jQ8"/>
                         <outlet property="mapView" destination="v3c-k9-FQT" id="mTy-YA-3xI"/>
                     </connections>
                 </viewController>
