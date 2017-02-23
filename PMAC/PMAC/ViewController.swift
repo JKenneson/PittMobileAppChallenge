@@ -20,7 +20,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     //MARK: Global variable declarations
     let locationManager = CLLocationManager()
     var locations: [CLLocation] = []    //To track all locations the user has gone on this run
-    var isFirstLoad = true
+    var polyline: MKPolyline?           //The collection of locations represented as a polyline
+    var isFirstLoad = true              //If this is the first time into the program
     var countForAccuracy = 0            //Will start the counter at 0 and not start tracking data until 5 positions read in
     var isTrackingPosition = true       //Default to tracking the position only
     var isTrackingRoute = false
@@ -73,8 +74,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             return location.coordinate
         })
         
-        let polyline = MKPolyline(coordinates: &coordinates, count: locations.count)
-        self.mapView.add(polyline, level: MKOverlayLevel.aboveRoads)
+        self.polyline = MKPolyline(coordinates: &coordinates, count: locations.count)
+        self.mapView.add(polyline!, level: MKOverlayLevel.aboveRoads)
     }
     
     
@@ -114,11 +115,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         else if (self.isTrackingPosition) {    //Follow the user by setting the map region to their current position
             self.locations.append(location!)
-            self.trackPosition(locationToZoom: location!)
+            trackPosition(locationToZoom: location!)
         }
         else if (self.isTrackingRoute) {       //Track the user's route; set the map region to the entire span of the route
             self.locations.append(location!)
-            
+            trackRoute()
         }
         else {                          //Allow the user to move around the map
             self.locations.append(location!)
@@ -150,7 +151,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     /// The map will track the user's entire route and keep it in the center of the map screen
     func trackRoute()  {
-        //Not yet implemented
+        if(self.polyline != nil) {  //If we currently have a polyline object
+            let rectToDraw = self.polyline?.boundingMapRect
+            self.mapView.setRegion(MKCoordinateRegionForMapRect(rectToDraw!), animated: true)
+        }
         
     }
     
