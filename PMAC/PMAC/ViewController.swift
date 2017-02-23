@@ -33,6 +33,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
 
+        self.mapView.delegate = self
         self.mapView.showsUserLocation = true
     }
 
@@ -66,6 +67,28 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     //MARK: Map View Methods
     
+    /// Creates a MKPolyline object of all the previous locations seen and tells the map to render this line
+    func drawRoute() {
+        var coordinates = self.locations.map({ (location: CLLocation!) -> CLLocationCoordinate2D in
+            return location.coordinate
+        })
+        
+        let polyline = MKPolyline(coordinates: &coordinates, count: locations.count)
+        self.mapView.add(polyline, level: MKOverlayLevel.aboveRoads)
+    }
+    
+    
+    /// Takes the MKPolyline object and renders it to the screen
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if (overlay is MKPolyline) {
+            let pr = MKPolylineRenderer(overlay: overlay);
+            pr.strokeColor = UIColor.red.withAlphaComponent(0.5);
+            pr.lineWidth = 5;
+            return pr;
+        }
+        
+        return MKPolylineRenderer()
+    }
     
     
     
@@ -105,34 +128,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             drawRoute()
         }
         
+        
         //Option to stop updating location below
         //self.locationManager.stopUpdatingLocation()
     }
-    
-    
-    func drawRoute() {
-        var coordinates = self.locations.map({ (location: CLLocation!) -> CLLocationCoordinate2D in
-            return location.coordinate
-        })
-        
-        
-        let polyline = MKPolyline(coordinates: &coordinates, count: locations.count)
-        self.mapView.add(polyline)
-    }
-    
-    
-    func mapVieW(mapView: MKMapView!, viewForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        
-        if (overlay is MKPolyline) {
-            let pr = MKPolylineRenderer(overlay: overlay);
-            pr.strokeColor = UIColor.red.withAlphaComponent(0.5);
-            pr.lineWidth = 5;
-            return pr;
-        }
-        
-        return MKPolylineRenderer()
-    }
-    
     
     
     /// The map will track the user's position and keep them in the center of the map screen
@@ -148,23 +147,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.mapView.setRegion(region, animated: true)  //Change whether or not to be animated
     }
     
+    
     /// The map will track the user's entire route and keep it in the center of the map screen
-    ///
     func trackRoute()  {
         //Not yet implemented
         
-    }
-    
-
-    
-    
-    /// Handling the errors from the location manager
-    ///
-    /// - Parameters:
-    ///   - manager: CLLocationManager that is handling the location
-    ///   - error: The error received by this manager
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Errors: " + error.localizedDescription)
     }
     
     
