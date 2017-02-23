@@ -116,16 +116,19 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         let location = readLocations.last
         
-        if(self.isFirstLoad) {                  //Don't save initial data while calibrating
-            if(countForAccuracy > 3) {
-                self.isFirstLoad = false
-                self.locations.append(location!)    //Save the first position
-            }
-            countForAccuracy += 1
+        print(location!.horizontalAccuracy)
+        if(location!.horizontalAccuracy > 10.0) {   //Don't save any points that are not accurate enough
+            return
+        }
+        
+        if(self.isFirstLoad) {                      //Don't animate first zoom into location
+            self.isFirstLoad = false
+            self.locations.append(location!)    //Save the first position
+            trackPosition(locationToZoom: location!, shouldAnimate: false)
         }
         else if (self.isTrackingPosition) {    //Follow the user by setting the map region to their current position
             self.locations.append(location!)
-            trackPosition(locationToZoom: location!)
+            trackPosition(locationToZoom: location!, shouldAnimate: true)
         }
         else if (self.isTrackingRoute) {       //Track the user's route; set the map region to the entire span of the route
             self.locations.append(location!)
@@ -148,14 +151,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     /// The map will track the user's position and keep them in the center of the map screen
     ///
     /// - Parameter locationToZoom: A CLLocation that will be the center of the map screen when we zoom in
-    func trackPosition(locationToZoom: CLLocation)  {
+    func trackPosition(locationToZoom: CLLocation, shouldAnimate: Bool)  {
         let center = CLLocationCoordinate2D(latitude: locationToZoom.coordinate.latitude, longitude: locationToZoom.coordinate.longitude)   //Find the center
         
         var region = MKCoordinateRegion()
         
         //Zoom into the location of the user with a radius of 1
         region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        self.mapView.setRegion(region, animated: true)  //Change whether or not to be animated
+        self.mapView.setRegion(region, animated: shouldAnimate)  //Change whether or not to be animated
     }
     
     
