@@ -130,11 +130,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         if(self.isFirstLoad) {                      //Don't animate first zoom into location
             self.firstLoadAccuracyCount += 1
+            trackPosition(locationToZoom: location!, shouldAnimate: false)
             
             if(self.firstLoadAccuracyCount > 5) {   //Wait until we've gotten a few points before tracking positions
                 self.isFirstLoad = false
                 self.locations.append(location!)    //Save the first position
-                trackPosition(locationToZoom: location!, shouldAnimate: false)
             }
         }
         else if (self.isTrackingPosition) {    //Follow the user by setting the map region to their current position
