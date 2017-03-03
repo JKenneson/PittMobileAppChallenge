@@ -12,14 +12,18 @@ import CoreLocation
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
+    //MARK: Global constants
+    let metersToMiles = 0.000621371             //Converting meters to a mile
+    let locationManager = CLLocationManager()   //Tracks the user's location and returns a CLLocation object
+    
     //MARK: IBOutlet Declarations
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var entireRouteButton: UIButton!
     @IBOutlet weak var currentPositionButton: UIButton!
     @IBOutlet weak var freeRoamButton: UIButton!
+    @IBOutlet weak var distanceTraveledOutputLabel: UILabel!
     
     //MARK: Global variable declarations
-    let locationManager = CLLocationManager()   //Tracks the user's location and returns a CLLocation object
     var locations: [CLLocation] = []            //To track all locations the user has gone on this run
     var polyline: MKPolyline?                   //The collection of locations represented as a polyline
     
@@ -150,6 +154,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         if(self.locations.count >= 2) { //If we have at least 2 points, start drawing the route
             drawRoute()
+            let printDistance = String(format: "%.2f Miles", self.totalDistance * self.metersToMiles)
+            self.distanceTraveledOutputLabel.text = "\(printDistance)"
         }
         
         print("Total Distance \(totalDistance)")

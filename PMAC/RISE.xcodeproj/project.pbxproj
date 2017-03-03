@@ -59,8 +59,8 @@
 		FC8301831E55434D008BFAC8 = {
 			isa = PBXGroup;
 			children = (
-				FC83018E1E55434D008BFAC8 /* PMAC */,
-				FC8301A31E55434E008BFAC8 /* PMACTests */,
+				FC83018E1E55434D008BFAC8 /* RISE */,
+				FC8301A31E55434E008BFAC8 /* RISETests */,
 				FC83018D1E55434D008BFAC8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,7 +74,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FC83018E1E55434D008BFAC8 /* PMAC */ = {
+		FC83018E1E55434D008BFAC8 /* RISE */ = {
 			isa = PBXGroup;
 			children = (
 				FC83018F1E55434D008BFAC8 /* AppDelegate.swift */,
@@ -84,15 +84,17 @@
 				FC8301981E55434D008BFAC8 /* LaunchScreen.storyboard */,
 				FC83019B1E55434D008BFAC8 /* Info.plist */,
 			);
+			name = RISE;
 			path = PMAC;
 			sourceTree = "<group>";
 		};
-		FC8301A31E55434E008BFAC8 /* PMACTests */ = {
+		FC8301A31E55434E008BFAC8 /* RISETests */ = {
 			isa = PBXGroup;
 			children = (
 				FC8301A41E55434E008BFAC8 /* PMACTests.swift */,
 				FC8301A61E55434E008BFAC8 /* Info.plist */,
 			);
+			name = RISETests;
 			path = PMACTests;
 			sourceTree = "<group>";
 		};
