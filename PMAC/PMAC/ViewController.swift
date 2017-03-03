@@ -21,11 +21,18 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var entireRouteButton: UIButton!
     @IBOutlet weak var currentPositionButton: UIButton!
     @IBOutlet weak var freeRoamButton: UIButton!
+    
     @IBOutlet weak var distanceTraveledOutputLabel: UILabel!
+    @IBOutlet weak var co2SavedLabel: UILabel!
+    @IBOutlet weak var displayTimeLabel: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
     
     //MARK: Global variable declarations
     var locations: [CLLocation] = []            //To track all locations the user has gone on this run
     var polyline: MKPolyline?                   //The collection of locations represented as a polyline
+    
+    var startTime = TimeInterval()              //Used for the timer to track time
+    var timer = Timer()                         //Timer that calls updateTime every second
     
     var totalDistance: Double = 0               //Tracking the total distance the user has gone
     
@@ -34,17 +41,30 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var isTrackingPosition = true               //Default to tracking the position only
     var isTrackingRoute = false                 //Show the entire route on the map
     
-    //Called when the view loads, setup for the Location Manager and Map View
+    //Called when the view loads, setup for the Location Manager and Map View and timer
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setup the location manager
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
 
+        //Setup the map view
         self.mapView.delegate = self
         self.mapView.showsUserLocation = true
+        
+        //Setup the timer
+        let aSelector : Selector = #selector(ViewController.updateTime)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
+        startTime = NSDate.timeIntervalSinceReferenceDate
+        
+        //To stop the timer:
+        /*
+         timer.invalidate()
+         timer == nil
+         */
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,7 +143,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         let location = readLocations.last
         
-        print(location!.horizontalAccuracy)
+        //print(location!.horizontalAccuracy)
         if(location!.horizontalAccuracy > 10.0) {   //Don't save any points that are not accurate enough
             return
         }
@@ -158,7 +178,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.distanceTraveledOutputLabel.text = "\(printDistance)"
         }
         
-        print("Total Distance \(totalDistance)")
+        //print("Total Distance \(totalDistance)")
         //Option to stop updating location below
         //self.locationManager.stopUpdatingLocation()
     }
@@ -185,6 +205,31 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.mapView.setRegion(MKCoordinateRegionForMapRect(rectToDraw!), animated: true)
         }
         
+    }
+    
+    
+    
+    /// Updates the time label on the map screen
+    func updateTime() {
+        let currentTime = NSDate.timeIntervalSinceReferenceDate
+        
+        var elapsedTime: TimeInterval = currentTime - startTime     //Find the difference between current time and start time
+        
+        let minutes = UInt8(elapsedTime / 60.0)                     //calculate the minutes in elapsed time
+        elapsedTime -= (TimeInterval(minutes) * 60)
+        
+        let seconds = UInt8(elapsedTime)                            //calculate the seconds in elapsed time
+        elapsedTime -= TimeInterval(seconds)
+        
+        let fraction = UInt8(elapsedTime * 100)                     //find out the fraction of milliseconds to be displayed
+        
+        //add the leading zero for minutes, seconds and millseconds and store them as string constants
+        let strMinutes = String(format: "%02d", minutes)
+        let strSeconds = String(format: "%02d", seconds)
+        let strFraction = String(format: "%02d", fraction)
+        
+        //concatenate minuets, seconds and milliseconds as assign it to the UILabel
+        displayTimeLabel.text = "\(strMinutes):\(strSeconds).\(strFraction)"
     }
     
     
