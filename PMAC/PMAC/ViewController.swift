@@ -26,6 +26,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var totalDistance: Double = 0               //Tracking the total distance the user has gone
     
     var isFirstLoad = true                      //If this is the first time into the program
+    var firstLoadAccuracyCount = 0              //Count to make sure our accuracy is good before tracking positions
     var isTrackingPosition = true               //Default to tracking the position only
     var isTrackingRoute = false                 //Show the entire route on the map
     
@@ -124,9 +125,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
         
         if(self.isFirstLoad) {                      //Don't animate first zoom into location
-            self.isFirstLoad = false
-            self.locations.append(location!)    //Save the first position
-            trackPosition(locationToZoom: location!, shouldAnimate: false)
+            self.firstLoadAccuracyCount += 1
+            
+            if(self.firstLoadAccuracyCount > 5) {   //Wait until we've gotten a few points before tracking positions
+                self.isFirstLoad = false
+                self.locations.append(location!)    //Save the first position
+                trackPosition(locationToZoom: location!, shouldAnimate: false)
+            }
         }
         else if (self.isTrackingPosition) {    //Follow the user by setting the map region to their current position
             self.totalDistance += location!.distance(from: self.locations.last!)   //Find the distance from the last location to this new one

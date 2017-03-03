@@ -26,14 +26,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FC83018C1E55434D008BFAC8 /* PMAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PMAC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC83018C1E55434D008BFAC8 /* RISE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RISE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC83018F1E55434D008BFAC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC8301911E55434D008BFAC8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC8301941E55434D008BFAC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC8301961E55434D008BFAC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC8301991E55434D008BFAC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC83019B1E55434D008BFAC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC8301A01E55434E008BFAC8 /* PMACTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PMACTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC8301A01E55434E008BFAC8 /* RISETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RISETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC8301A41E55434E008BFAC8 /* PMACTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMACTests.swift; sourceTree = "<group>"; };
 		FC8301A61E55434E008BFAC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,8 +68,8 @@
 		FC83018D1E55434D008BFAC8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FC83018C1E55434D008BFAC8 /* PMAC.app */,
-				FC8301A01E55434E008BFAC8 /* PMACTests.xctest */,
+				FC83018C1E55434D008BFAC8 /* RISE.app */,
+				FC8301A01E55434E008BFAC8 /* RISETests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,9 +99,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FC83018B1E55434D008BFAC8 /* PMAC */ = {
+		FC83018B1E55434D008BFAC8 /* RISE */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC8301A91E55434E008BFAC8 /* Build configuration list for PBXNativeTarget "PMAC" */;
+			buildConfigurationList = FC8301A91E55434E008BFAC8 /* Build configuration list for PBXNativeTarget "RISE" */;
 			buildPhases = (
 				FC8301881E55434D008BFAC8 /* Sources */,
 				FC8301891E55434D008BFAC8 /* Frameworks */,
@@ -111,14 +111,14 @@
 			);
 			dependencies = (
 			);
-			name = PMAC;
+			name = RISE;
 			productName = PMAC;
-			productReference = FC83018C1E55434D008BFAC8 /* PMAC.app */;
+			productReference = FC83018C1E55434D008BFAC8 /* RISE.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FC83019F1E55434E008BFAC8 /* PMACTests */ = {
+		FC83019F1E55434E008BFAC8 /* RISETests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FC8301AC1E55434E008BFAC8 /* Build configuration list for PBXNativeTarget "PMACTests" */;
+			buildConfigurationList = FC8301AC1E55434E008BFAC8 /* Build configuration list for PBXNativeTarget "RISETests" */;
 			buildPhases = (
 				FC83019C1E55434E008BFAC8 /* Sources */,
 				FC83019D1E55434E008BFAC8 /* Frameworks */,
@@ -129,9 +129,9 @@
 			dependencies = (
 				FC8301A21E55434E008BFAC8 /* PBXTargetDependency */,
 			);
-			name = PMACTests;
+			name = RISETests;
 			productName = PMACTests;
-			productReference = FC8301A01E55434E008BFAC8 /* PMACTests.xctest */;
+			productReference = FC8301A01E55434E008BFAC8 /* RISETests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -157,7 +157,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FC8301871E55434D008BFAC8 /* Build configuration list for PBXProject "PMAC" */;
+			buildConfigurationList = FC8301871E55434D008BFAC8 /* Build configuration list for PBXProject "RISE" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -170,8 +170,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FC83018B1E55434D008BFAC8 /* PMAC */,
-				FC83019F1E55434E008BFAC8 /* PMACTests */,
+				FC83018B1E55434D008BFAC8 /* RISE */,
+				FC83019F1E55434E008BFAC8 /* RISETests */,
 			);
 		};
 /* End PBXProject section */
@@ -219,7 +219,7 @@
 /* Begin PBXTargetDependency section */
 		FC8301A21E55434E008BFAC8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FC83018B1E55434D008BFAC8 /* PMAC */;
+			target = FC83018B1E55434D008BFAC8 /* RISE */;
 			targetProxy = FC8301A11E55434E008BFAC8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -372,7 +372,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.KennesonStudios.PMACTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PMAC.app/PMAC";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RISE.app/RISE";
 			};
 			name = Debug;
 		};
@@ -387,14 +387,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.KennesonStudios.PMACTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PMAC.app/PMAC";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RISE.app/RISE";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FC8301871E55434D008BFAC8 /* Build configuration list for PBXProject "PMAC" */ = {
+		FC8301871E55434D008BFAC8 /* Build configuration list for PBXProject "RISE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC8301A71E55434E008BFAC8 /* Debug */,
@@ -403,21 +403,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FC8301A91E55434E008BFAC8 /* Build configuration list for PBXNativeTarget "PMAC" */ = {
+		FC8301A91E55434E008BFAC8 /* Build configuration list for PBXNativeTarget "RISE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC8301AA1E55434E008BFAC8 /* Debug */,
 				FC8301AB1E55434E008BFAC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		FC8301AC1E55434E008BFAC8 /* Build configuration list for PBXNativeTarget "PMACTests" */ = {
+		FC8301AC1E55434E008BFAC8 /* Build configuration list for PBXNativeTarget "RISETests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FC8301AD1E55434E008BFAC8 /* Debug */,
 				FC8301AE1E55434E008BFAC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
