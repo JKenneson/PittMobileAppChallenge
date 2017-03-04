@@ -117,7 +117,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     /// Prints new label information to the screen
     func updateLabels() {
         //Print out distance information
-        let distanceInMiles = self.totalDistance * self.metersToMiles
+        var distanceInMiles = self.totalDistance * self.metersToMiles
         let printDistance = String(format: "%.2f Miles", distanceInMiles)
         self.distanceTraveledOutputLabel.text = "\(printDistance)"
         
@@ -127,6 +127,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.co2SavedLabel.text = "\(printCO2Saved)"
         
         //Print out pace information
+        if(distanceInMiles <= 0) {      //Prevent dividing by zero
+            distanceInMiles = 0.01
+        }
         var paceTime = 1.0 / (distanceInMiles / self.totalSeconds)
         //print("Pace Time: \(paceTime)")
         
@@ -182,8 +185,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         let location = readLocations.last
         
-        //print(location!.horizontalAccuracy)
-        if(location!.horizontalAccuracy > 10.0) {   //Don't save any points that are not accurate enough
+        print(location!.horizontalAccuracy)
+        if(location!.horizontalAccuracy > 30.0) {   //Don't save any points that are not accurate enough
             return
         }
         
@@ -191,7 +194,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.firstLoadAccuracyCount += 1
             trackPosition(locationToZoom: location!, shouldAnimate: false)
             
-            if(self.firstLoadAccuracyCount > 5) {   //Wait until we've gotten a few points before tracking positions
+            if(self.firstLoadAccuracyCount > 3) {   //Wait until we've gotten a few points before tracking positions
                 self.isFirstLoad = false
                 self.locations.append(location!)                    //Save the first position
                 startTime = NSDate.timeIntervalSinceReferenceDate   //Set the start time to here
