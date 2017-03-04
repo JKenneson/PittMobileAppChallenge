@@ -35,6 +35,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var timer = Timer()                         //Timer that calls updateTime every second
     
     var totalDistance: Double = 0               //Tracking the total distance the user has gone
+    var totalSeconds: Double = 0                //Tracking the total amount of seconds the user has been moving
     
     var isFirstLoad = true                      //If this is the first time into the program
     var firstLoadAccuracyCount = 0              //Count to make sure our accuracy is good before tracking positions
@@ -63,7 +64,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //Setup the timer
         let aSelector : Selector = #selector(ViewController.updateTime)
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
-        startTime = NSDate.timeIntervalSinceReferenceDate
         
         //To stop the timer:
         /*
@@ -85,7 +85,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     ///
     /// - Parameter sender: The Entire Route UIButton
     @IBAction func trackEntireRouteButton(_ sender: UIButton) {
-        print("Entire Route")
+        //print("Entire Route")
         self.isTrackingRoute = true
         self.isTrackingPosition = false
     }
@@ -95,13 +95,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     ///
     /// - Parameter sender: The Current Position UIButton
     @IBAction func trackCurrentPositionButton(_ sender: UIButton) {
-        print("Tracking Position")
+        //print("Tracking Position")
         self.isTrackingPosition = true
         self.isTrackingRoute = false
     }
     
     @IBAction func trackFreeRoamButton(_ sender: Any) {
-        print("Free Roam")
+        //print("Free Roam")
         self.isTrackingRoute = false
         self.isTrackingPosition = false
     }
@@ -109,6 +109,34 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     
     //MARK: Map View Methods
+    
+    
+    /// Prints new label information to the screen
+    func updateLabels() {
+        //Print out distance information
+        let distanceInMiles = self.totalDistance * self.metersToMiles
+        let printDistance = String(format: "%.2f Miles", distanceInMiles)
+        self.distanceTraveledOutputLabel.text = "\(printDistance)"
+        
+        //Print out pace information
+        var paceTime = 1.0 / (distanceInMiles / self.totalSeconds)
+        print("Pace Time: \(paceTime)")
+        
+        let minutes = UInt8(paceTime / 60.0)                     //calculate the minutes in elapsed time
+        paceTime -= (TimeInterval(minutes) * 60)
+        
+        let seconds = UInt8(paceTime)                            //calculate the seconds in elapsed time
+        
+        //add the leading zero for minutes and seconds and store them as string constants
+        let strMinutes = String(format: "%02d", minutes)
+        let strSeconds = String(format: "%02d", seconds)
+        
+        //concatenate minuets, seconds and milliseconds as assign it to the UILabel
+        paceLabel.text = "\(strMinutes):\(strSeconds) min/mi"
+        
+
+    }
+    
     
     /// Creates a MKPolyline object of all the previous locations seen and tells the map to render this line
     func drawRoute() {
@@ -159,7 +187,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             
             if(self.firstLoadAccuracyCount > 5) {   //Wait until we've gotten a few points before tracking positions
                 self.isFirstLoad = false
-                self.locations.append(location!)    //Save the first position
+                self.locations.append(location!)                    //Save the first position
+                startTime = NSDate.timeIntervalSinceReferenceDate   //Set the start time to here
             }
         }
         else if (self.isTrackingPosition) {    //Follow the user by setting the map region to their current position
@@ -177,10 +206,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             self.locations.append(location!)
         }
         
-        if(self.locations.count >= 2) { //If we have at least 2 points, start drawing the route
+        
+        //If we have at least 2 points, start drawing the route and updating labels
+        if(self.locations.count >= 2) {
             drawRoute()
-            let printDistance = String(format: "%.2f Miles", self.totalDistance * self.metersToMiles)
-            self.distanceTraveledOutputLabel.text = "\(printDistance)"
+            
+            updateLabels()
+            
         }
         
         //print("Total Distance \(totalDistance)")
@@ -216,9 +248,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     /// Updates the time label on the map screen
     func updateTime() {
+        
+        if(self.isFirstLoad == true) {      //Don't update the time until the location is determined
+            return
+        }
+        
         let currentTime = NSDate.timeIntervalSinceReferenceDate
         
         var elapsedTime: TimeInterval = currentTime - startTime     //Find the difference between current time and start time
+        //print("Total time: \(elapsedTime)")
+        self.totalSeconds = elapsedTime
         
         let minutes = UInt8(elapsedTime / 60.0)                     //calculate the minutes in elapsed time
         elapsedTime -= (TimeInterval(minutes) * 60)
