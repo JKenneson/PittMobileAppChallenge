@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     //MARK: Global constants
     let metersToMiles = 0.000621371             //Converting meters to a mile
@@ -22,6 +22,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var entireRouteButton: UIButton!
     @IBOutlet weak var currentPositionButton: UIButton!
     @IBOutlet weak var freeRoamButton: UIButton!
+    @IBOutlet weak var endRunButton: UIButton!
     
     @IBOutlet weak var distanceTraveledOutputLabel: UILabel!
     @IBOutlet weak var co2SavedLabel: UILabel!
@@ -53,6 +54,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         currentPositionButton.layer.cornerRadius = 4
         entireRouteButton.layer.cornerRadius = 4
         freeRoamButton.layer.cornerRadius = 4
+        endRunButton.layer.cornerRadius = 4
         
         //Setup the location manager
         self.locationManager.delegate = self
@@ -65,7 +67,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.mapView.showsUserLocation = true
         
         //Setup the timer
-        let aSelector : Selector = #selector(ViewController.updateTime)
+        let aSelector : Selector = #selector(MapController.updateTime)
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
         
         //To stop the timer:
@@ -81,11 +83,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     
-    //MARK: Position, Route, annd Free Roam Button Methods
+    //MARK: Position, Route, Free Roam, and End Run Button Methods
     
     
     /// Will switch the map view to tracking the entire route in the map region
-    ///
     /// - Parameter sender: The Entire Route UIButton
     @IBAction func trackEntireRouteButton(_ sender: UIButton) {
         //print("Entire Route")
@@ -95,7 +96,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     
     /// Will switch the map view to tracking only the user in the map region
-    ///
     /// - Parameter sender: The Current Position UIButton
     @IBAction func trackCurrentPositionButton(_ sender: UIButton) {
         //print("Tracking Position")
@@ -103,12 +103,22 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.isTrackingRoute = false
     }
     
+    
+    /// Free Roam Button pushed - Allows the user to move around the map manually
+    /// - Parameter sender: The Free Roam UIButton
     @IBAction func trackFreeRoamButton(_ sender: Any) {
         //print("Free Roam")
         self.isTrackingRoute = false
         self.isTrackingPosition = false
     }
     
+    
+    /// End Run button will handle saving the route and sending the user to a new screen
+    /// This should have a confirmation button - Maybe pause everything when displayed
+    /// - Parameter sender: The End Run button
+    @IBAction func endRunButtonPushed(_ sender: Any) {
+        print("End Run button pushed")
+    }
     
     
     //MARK: Map View Methods
@@ -185,7 +195,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         let location = readLocations.last
         
-        print(location!.horizontalAccuracy)
+        //print(location!.horizontalAccuracy)
         if(location!.horizontalAccuracy > 30.0) {   //Don't save any points that are not accurate enough
             return
         }
