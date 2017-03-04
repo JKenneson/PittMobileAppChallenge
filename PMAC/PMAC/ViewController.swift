@@ -14,6 +14,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     //MARK: Global constants
     let metersToMiles = 0.000621371             //Converting meters to a mile
+    let poundsCO2SavedPerMile = 0.906           //0.906 pounds of CO2 are emitted on average per mile of driving
     let locationManager = CLLocationManager()   //Tracks the user's location and returns a CLLocation object
     
     //MARK: IBOutlet Declarations
@@ -33,6 +34,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     var startTime = TimeInterval()              //Used for the timer to track time
     var timer = Timer()                         //Timer that calls updateTime every second
+    
+    var totalCO2Saved: Double = 0               //Tracking the total amount of CO2 saved on the run
     
     var totalDistance: Double = 0               //Tracking the total distance the user has gone
     var totalSeconds: Double = 0                //Tracking the total amount of seconds the user has been moving
@@ -118,9 +121,14 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let printDistance = String(format: "%.2f Miles", distanceInMiles)
         self.distanceTraveledOutputLabel.text = "\(printDistance)"
         
+        //Print out CO2 savings
+        self.totalCO2Saved = distanceInMiles * self.poundsCO2SavedPerMile
+        let printCO2Saved = String(format: "%.2 f lbs", self.totalCO2Saved)
+        self.co2SavedLabel.text = "\(printCO2Saved)"
+        
         //Print out pace information
         var paceTime = 1.0 / (distanceInMiles / self.totalSeconds)
-        print("Pace Time: \(paceTime)")
+        //print("Pace Time: \(paceTime)")
         
         let minutes = UInt8(paceTime / 60.0)                     //calculate the minutes in elapsed time
         paceTime -= (TimeInterval(minutes) * 60)
@@ -133,8 +141,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         //concatenate minuets, seconds and milliseconds as assign it to the UILabel
         paceLabel.text = "\(strMinutes):\(strSeconds) min/mi"
-        
-
     }
     
     
