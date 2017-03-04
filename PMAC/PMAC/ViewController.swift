@@ -45,6 +45,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Bevel the buttons
+        currentPositionButton.layer.cornerRadius = 4
+        entireRouteButton.layer.cornerRadius = 4
+        freeRoamButton.layer.cornerRadius = 4
+        
         //Setup the location manager
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
