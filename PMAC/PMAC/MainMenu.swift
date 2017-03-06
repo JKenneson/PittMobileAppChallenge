@@ -11,7 +11,8 @@ import UIKit
 class MainMenu: UIViewController {
     
     @IBOutlet weak var newRunButton: UIButton!
-    @IBOutlet weak var myTreeButton: UIButton!
+    @IBOutlet weak var treeStatsButton: UIButton!
+    @IBOutlet weak var mainMenuImageView: UIImageView!
     
     //Called when the view loads
     override func viewDidLoad() {
@@ -19,9 +20,11 @@ class MainMenu: UIViewController {
     
         //Bevel the buttons
         self.newRunButton.layer.cornerRadius = 4
-        self.myTreeButton.layer.cornerRadius = 4
+        self.treeStatsButton.layer.cornerRadius = 4
     
-    
+        //Testing the image view
+        mainMenuImageView.image = UIImage(named: "1st stage")
+        
     }
     
     override func didReceiveMemoryWarning() {
