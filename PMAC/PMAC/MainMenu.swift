@@ -10,11 +10,16 @@ import UIKit
 
 class MainMenu: UIViewController {
     
+    @IBOutlet weak var newRunButton: UIButton!
+    @IBOutlet weak var myTreeButton: UIButton!
     
     //Called when the view loads
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        //Bevel the buttons
+        self.newRunButton.layer.cornerRadius = 4
+        self.myTreeButton.layer.cornerRadius = 4
     
     
     }
