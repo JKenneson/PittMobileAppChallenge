@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  PMAC
+//  MapController.swift
+//  RISE
 //
 //  Created by Jonathan Kenneson on 2/15/17.
 //  Copyright © 2017 Kenneson Studios. All rights reserved.
@@ -128,7 +128,7 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     func updateLabels() {
         //Print out distance information
         var distanceInMiles = self.totalDistance * self.metersToMiles
-        let printDistance = String(format: "%.2f Miles", distanceInMiles)
+        let printDistance = String(format: "%.2f mi", distanceInMiles)
         self.distanceTraveledOutputLabel.text = "\(printDistance)"
         
         //Print out CO2 savings
