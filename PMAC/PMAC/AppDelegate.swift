@@ -8,19 +8,6 @@
 
 import UIKit
 
-
-//MARK: System-wide variables
-struct Globals {
-    static var totalUserCO2Saved: Double = 0.0                  //The total amount of CO2 saved by the user
-    static var totalUserTreesSaved: Int = 0                     //The total number of completed trees
-    
-    static var CO2SavedForTree: Double = 0.0                    //The tree specific amount of CO2 saved
-    
-}
-
-
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
