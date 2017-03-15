@@ -14,6 +14,8 @@ class MainMenu: UIViewController {
     @IBOutlet weak var newRunButton: UIButton!
     @IBOutlet weak var treeStatsButton: UIButton!
     @IBOutlet weak var mainMenuImageView: UIImageView!
+    @IBOutlet weak var expLabel: UILabel!
+    @IBOutlet weak var expBar: UIProgressView!
     
     //MARK: Global variables
     
