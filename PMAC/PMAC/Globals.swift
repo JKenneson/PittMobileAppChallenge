@@ -15,7 +15,7 @@ class Globals {
     static var totalUserTreesSaved: Int = 0                     //The total number of completed trees
     
     static var treeCO2Saved: Double = 0.0                       //The tree specific amount of CO2 saved
-    static var treeStage: Int = 0                               //The stage we are currently on for our tree
+    static var treeStage: Int = 1                               //The stage we are currently on for our tree
     
     
     //The maximum amount of CO2 saved to finish each stage

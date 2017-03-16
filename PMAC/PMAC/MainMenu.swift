@@ -65,7 +65,7 @@ class MainMenu: UIViewController {
     /// Updating the EXP bar and label for our amount of CO2
     func updateEXPBar() {
         //Create the label by concatenating the current amount of CO2 and the stages' max CO2
-        let expLabelString:String = "\(Globals.treeCO2Saved) / \(Globals.CO2ForStage(currentStage: Globals.treeStage))"
+        let expLabelString:String = "CO2 Saved: \(Globals.treeCO2Saved) / \(Globals.CO2ForStage(currentStage: Globals.treeStage))"
         //The value of the bar is division of the difference of each item from the stage before it
         //i.e. We're in stage 2 (trying to get to 15.0) Since stage 1 was 7 we do (currentCO2 - Stage1) / (Stage2 - Stage1) to get a nice percentage
         let numeratorValue:Float = Float(Globals.treeCO2Saved - Globals.CO2ForStage(currentStage: Globals.treeStage - 1))
