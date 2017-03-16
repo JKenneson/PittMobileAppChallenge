@@ -10,15 +10,28 @@ import UIKit
 
 class TreeStatsViewController: UIViewController {
 
+    //MARK: Outlets
     @IBOutlet weak var treeStatsView: UIView!
+    @IBOutlet weak var closeButton: UIButton!
     
+    @IBOutlet weak var totalCO2SavedLabel: UILabel!
+    @IBOutlet weak var totalTreesSavedLabel: UILabel!
+    @IBOutlet weak var CO2ForTreeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //Set the background to slightly transparent to still see the menu
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        
+        //Bevels, so nice
         self.treeStatsView.layer.cornerRadius = 4
+        self.closeButton.layer.cornerRadius = 4
+        
+        //Setting the text for the labels according to the values in the Globals class
+        self.totalCO2SavedLabel.text = String(format: "%.2f lbs", Globals.totalUserCO2Saved)
+        self.totalTreesSavedLabel.text = "\(Globals.totalUserTreesSaved)"
+        self.CO2ForTreeLabel.text = String(format: "%.2f lbs", Globals.treeCO2Saved)
         
         self.showAnimate()
     }
@@ -37,8 +50,6 @@ class TreeStatsViewController: UIViewController {
         //self.view.removeFromSuperview()
     }
 
-    
-    
     
     
     //MARK: Animation Methods
