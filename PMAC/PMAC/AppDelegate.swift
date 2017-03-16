@@ -16,6 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Recover the stored user data
+        let defaults = UserDefaults.standard
+        if let totalUserCO2SavedString = defaults.string(forKey: Keys.totalUserCO2Saved) {
+            Globals.totalUserCO2Saved = Double(totalUserCO2SavedString)!
+        }
+        if let totalUserTreesSavedString = defaults.string(forKey: Keys.totalUserTreesSaved) {
+            Globals.totalUserTreesSaved = Int(totalUserTreesSavedString)!
+        }
+        if let treeCO2SavedString = defaults.string(forKey: Keys.treeCO2Saved) {
+            Globals.treeCO2Saved = Double(treeCO2SavedString)!
+        }
+        if let treeStageString = defaults.string(forKey: Keys.treeStage) {
+            Globals.treeStage = Int(treeStageString)!
+        }
+        
         return true
     }
 
@@ -39,6 +55,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        
+        //Saving the important data to persist across loads
+        let defaults = UserDefaults.standard
+        defaults.setValue(Globals.totalUserCO2Saved, forKey: Keys.totalUserCO2Saved)
+        defaults.setValue(Globals.totalUserTreesSaved, forKey: Keys.totalUserTreesSaved)
+        defaults.setValue(Globals.treeCO2Saved, forKey: Keys.treeCO2Saved)
+        defaults.setValue(Globals.treeStage, forKey: Keys.treeStage)
+        defaults.synchronize()
+
+        
     }
 
 
