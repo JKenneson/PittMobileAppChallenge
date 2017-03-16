@@ -152,6 +152,21 @@
                                     <segue destination="2R1-qT-VGK" kind="presentation" modalTransitionStyle="crossDissolve" id="f8e-e1-345"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yqt-1f-5In">
+                                <rect key="frame" x="88" y="322" width="198" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label verifyAmbiguity="off" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Determining Location..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Uh-Dq-fFP">
+                                        <rect key="frame" x="0.0" y="0.0" width="177.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView verifyAmbiguity="off" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UTu-II-Av3">
+                                        <rect key="frame" x="177.5" y="0.0" width="20" height="20.5"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -159,6 +174,8 @@
                     <connections>
                         <outlet property="co2SavedLabel" destination="19H-yL-k2t" id="GIY-QH-Kb9"/>
                         <outlet property="currentPositionButton" destination="mL5-iu-yk7" id="P0C-UP-sEG"/>
+                        <outlet property="determineLocationLabel" destination="5Uh-Dq-fFP" id="H8e-kC-m6S"/>
+                        <outlet property="determineLocationWheel" destination="UTu-II-Av3" id="FF2-mS-f5g"/>
                         <outlet property="displayTimeLabel" destination="nAj-CV-w1H" id="2P3-yE-b2n"/>
                         <outlet property="distanceTraveledOutputLabel" destination="kEq-8j-ZY5" id="DP8-Nh-YOS"/>
                         <outlet property="endRunButton" destination="VcN-FG-wo1" id="u5H-pb-VlS"/>
@@ -194,7 +211,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="1" height="0.0"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQf-zM-Xx6">
                                 <rect key="frame" x="122" y="84" width="130" height="39"/>
@@ -224,8 +242,8 @@
                                     <action selector="treeStatsButtonPushed:" destination="2R1-qT-VGK" eventType="touchUpInside" id="WPu-Au-B48"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="32.5/48.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ENa-A4-gOR">
-                                <rect key="frame" x="16" y="199" width="343" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CO2 Saved: 0.00 / 7.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ENa-A4-gOR">
+                                <rect key="frame" x="16" y="199" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>

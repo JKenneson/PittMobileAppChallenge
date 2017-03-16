@@ -28,6 +28,8 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     @IBOutlet weak var co2SavedLabel: UILabel!
     @IBOutlet weak var displayTimeLabel: UILabel!
     @IBOutlet weak var paceLabel: UILabel!
+    @IBOutlet weak var determineLocationLabel: UILabel!
+    @IBOutlet weak var determineLocationWheel: UIActivityIndicatorView!
     
     //MARK: Global variable declarations
     var locations: [CLLocation] = []            //To track all locations the user has gone on this run
@@ -64,7 +66,10 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
 
         //Setup the map view
         self.mapView.delegate = self
-        self.mapView.showsUserLocation = true
+        
+        //Setup the Determine Location Wheel
+        self.determineLocationWheel.startAnimating()
+        self.determineLocationWheel.hidesWhenStopped = true
         
         //Setup the timer
         let aSelector : Selector = #selector(MapController.updateTime)
@@ -212,6 +217,11 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         if(self.isFirstLoad) {                      //Don't animate first zoom into location
             self.firstLoadAccuracyCount += 1
             trackPosition(locationToZoom: location!, shouldAnimate: false)
+            
+            //Clear the Determining Location label and wheel, and show the user position
+            self.determineLocationLabel.text = ""
+            self.determineLocationWheel.stopAnimating()
+            self.mapView.showsUserLocation = true
             
             if(self.firstLoadAccuracyCount > 3) {   //Wait until we've gotten a few points before tracking positions
                 self.isFirstLoad = false
