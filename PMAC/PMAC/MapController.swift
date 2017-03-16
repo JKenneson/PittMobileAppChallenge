@@ -118,6 +118,9 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     /// - Parameter sender: The End Run button
     @IBAction func endRunButtonPushed(_ sender: Any) {
         print("End Run button pushed")
+        
+        //Save the CO2 saved from the run
+        Globals.incrementUserCO2(amountOfCO2ToAdd: self.totalCO2Saved)
     }
     
     
