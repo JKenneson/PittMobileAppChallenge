@@ -146,17 +146,23 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         var paceTime = 1.0 / (distanceInMiles / self.totalSeconds)
         //print("Pace Time: \(paceTime)")
         
-        let minutes = UInt8(paceTime / 60.0)                     //calculate the minutes in elapsed time
-        paceTime -= (TimeInterval(minutes) * 60)
-        
-        let seconds = UInt8(paceTime)                            //calculate the seconds in elapsed time
-        
-        //add the leading zero for minutes and seconds and store them as string constants
-        let strMinutes = String(format: "%02d", minutes)
-        let strSeconds = String(format: "%02d", seconds)
-        
-        //concatenate minuets, seconds and milliseconds as assign it to the UILabel
-        paceLabel.text = "\(strMinutes):\(strSeconds) min/mi"
+        //Preventing an exception (UInt8 cannot hold anything larger than 256)
+        if( paceTime >= 15360 ) {
+            paceLabel.text = "Very Slow"
+        }
+        else {
+            let minutes = UInt8(paceTime / 60.0)                     //calculate the minutes in elapsed time
+            paceTime -= (TimeInterval(minutes) * 60)
+            
+            let seconds = UInt8(paceTime)                            //calculate the seconds in elapsed time
+            
+            //add the leading zero for minutes and seconds and store them as string constants
+            let strMinutes = String(format: "%02d", minutes)
+            let strSeconds = String(format: "%02d", seconds)
+            
+            //concatenate minuets, seconds and milliseconds as assign it to the UILabel
+            paceLabel.text = "\(strMinutes):\(strSeconds) min/mi"
+        }
     }
     
     
