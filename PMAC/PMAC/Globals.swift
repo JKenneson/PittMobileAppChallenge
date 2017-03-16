@@ -76,4 +76,26 @@ class Globals {
         Globals.incrementUserCO2(amountOfCO2ToAdd: remainingCO2)        //Add in the rest of the CO2 saved
     }
     
+    
+    ///Returns the amount of CO2 needed for the stage passed in
+    ///
+    /// - Parameter currentStage: The stage that you are on
+    /// - Returns: The CO2 needed to advance to the next stage
+    static func CO2ForStage(currentStage: Int) -> Double {
+        switch currentStage {
+        case 1:
+            return self.stage1
+        case 2:
+            return self.stage2
+        case 3:
+            return self.stage3
+        case 4:
+            return self.stage4
+        case 5:
+            return self.stage5
+        default:
+            return 0.0
+        }
+    }
+    
 }
