@@ -43,6 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        //Saving the important data to persist across loads
+        let defaults = UserDefaults.standard
+        defaults.setValue(Globals.totalUserCO2Saved, forKey: Keys.totalUserCO2Saved)
+        defaults.setValue(Globals.totalUserTreesSaved, forKey: Keys.totalUserTreesSaved)
+        defaults.setValue(Globals.treeCO2Saved, forKey: Keys.treeCO2Saved)
+        defaults.setValue(Globals.treeStage, forKey: Keys.treeStage)
+        defaults.synchronize()
+
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

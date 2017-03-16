@@ -284,5 +284,46 @@
             </objects>
             <point key="canvasLocation" x="88.799999999999997" y="124.58770614692655"/>
         </scene>
+        <!--Tree Stats View Controller-->
+        <scene sceneID="RWo-si-0Z2">
+            <objects>
+                <viewController storyboardIdentifier="treeStatsPopUpID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z6q-9B-0t0" customClass="TreeStatsViewController" customModule="RISE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Od-HU-5dC"/>
+                        <viewControllerLayoutGuide type="bottom" id="da5-x3-y0n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k5I-nb-Pqd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Bs-b6-UBS">
+                                <rect key="frame" x="16" y="67" width="343" height="203"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lcx-gD-zTJ">
+                                        <rect key="frame" x="144" y="153" width="54" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closePopUp:" destination="z6q-9B-0t0" eventType="touchUpInside" id="qVb-T8-7cT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.15613526859999999" green="0.94820790840000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="treeStatsView" destination="6Bs-b6-UBS" id="pSC-Ci-36X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rmc-sx-bgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="88.799999999999997" y="866.71664167916049"/>
+        </scene>
     </scenes>
 </document>

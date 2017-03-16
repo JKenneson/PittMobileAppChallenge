@@ -59,7 +59,12 @@ class MainMenu: UIViewController {
     /// Called when the Tree Stats button is pushed
     /// - Parameter sender: The tree stats button
     @IBAction func treeStatsButtonPushed(_ sender: UIButton) {
-        
+        //Create a popup view for the tree stats
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "treeStatsPopUpID") as! TreeStatsViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
         
 
     }
