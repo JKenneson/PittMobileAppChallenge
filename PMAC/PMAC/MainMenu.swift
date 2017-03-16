@@ -17,7 +17,7 @@ class MainMenu: UIViewController {
     @IBOutlet weak var expLabel: UILabel!
     @IBOutlet weak var expBar: UIProgressView!
     
-    //MARK: Global variables
+    @IBOutlet weak var testButton: UIButton!
     
     
     
@@ -28,6 +28,7 @@ class MainMenu: UIViewController {
         //Bevel the buttons
         self.newRunButton.layer.cornerRadius = 4
         self.treeStatsButton.layer.cornerRadius = 4
+        self.testButton.layer.cornerRadius = 4
     
         //Draw the background image based on the current stage
         self.mainMenuImageView.image = getStageImage(stageNumber: Globals.treeStage)
@@ -43,20 +44,24 @@ class MainMenu: UIViewController {
     }
     
     
-    
+///*********************************************************************************************************///
+    ///This is just a test function for incrementing the CO2... Get rid of it!!!
+    @IBAction func testButtonPushed(_ sender: Any) {
+        //Testing by adding to the CO2 every time button is clicked
+        Globals.incrementUserCO2(amountOfCO2ToAdd: 1)
+        
+        self.mainMenuImageView.image = getStageImage(stageNumber: Globals.treeStage)        //Update the main screen
+        updateEXPBar()                                                                      //Update the Exp bar and label
+    }
+///*********************************************************************************************************///
     
     
     /// Called when the Tree Stats button is pushed
     /// - Parameter sender: The tree stats button
     @IBAction func treeStatsButtonPushed(_ sender: UIButton) {
+        
+        
 
-        
-        
-//Testing by adding to the CO2 every time button is clicked
-        Globals.incrementUserCO2(amountOfCO2ToAdd: 1)
-        
-        self.mainMenuImageView.image = getStageImage(stageNumber: Globals.treeStage)        //Update the main screen
-        updateEXPBar()                                                                      //Update the Exp bar and label
     }
     
     

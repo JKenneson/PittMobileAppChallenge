@@ -253,6 +253,20 @@
                                 <rect key="frame" x="99" y="227" width="177" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F84-rc-fo1">
+                                <rect key="frame" x="287" y="142" width="72" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.15613526859999999" green="0.94820790840000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <size key="titleShadowOffset" width="1" height="0.0"/>
+                                <state key="normal" title="Test">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="testButtonPushed:" destination="2R1-qT-VGK" eventType="touchUpInside" id="Ndv-pS-COy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -262,6 +276,7 @@
                         <outlet property="expLabel" destination="ENa-A4-gOR" id="hU9-uK-D4D"/>
                         <outlet property="mainMenuImageView" destination="hiF-ac-Apq" id="Cvj-fa-enq"/>
                         <outlet property="newRunButton" destination="uQf-zM-Xx6" id="Qed-Xi-KO2"/>
+                        <outlet property="testButton" destination="F84-rc-fo1" id="bci-8L-5ES"/>
                         <outlet property="treeStatsButton" destination="VVO-2v-WTb" id="gJz-H5-Zl3"/>
                     </connections>
                 </viewController>
