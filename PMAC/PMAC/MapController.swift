@@ -97,6 +97,13 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         //print("Entire Route")
         self.isTrackingRoute = true
         self.isTrackingPosition = false
+        
+        if(self.locations.count > 1) {          //Zoom to the route
+            drawRoute()
+            updateLabels()
+            trackRoute()
+            drawRoute()
+        }
     }
     
     
@@ -106,6 +113,10 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         //print("Tracking Position")
         self.isTrackingPosition = true
         self.isTrackingRoute = false
+        
+        if(self.locations.count > 0) {          //Zoom to the user on their last position
+            trackPosition(locationToZoom: self.locations.last!, shouldAnimate: true)
+        }
     }
     
     
@@ -115,6 +126,7 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         //print("Free Roam")
         self.isTrackingRoute = false
         self.isTrackingPosition = false
+        
     }
     
     
@@ -123,6 +135,8 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
     /// - Parameter sender: The End Run button
     @IBAction func endRunButtonPushed(_ sender: Any) {
         print("End Run button pushed")
+        
+        self.locationManager.stopUpdatingLocation()     //Stop updating
         
         //Save the CO2 saved from the run
         Globals.incrementUserCO2(amountOfCO2ToAdd: self.totalCO2Saved)
@@ -209,8 +223,8 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         
         let location = readLocations.last
         
-        //print(location!.horizontalAccuracy)
-        if(location!.horizontalAccuracy > 30.0) {   //Don't save any points that are not accurate enough
+        print(location!.horizontalAccuracy)
+        if(location!.horizontalAccuracy > 100.0) {   //Don't save any points that are not accurate enough
             return
         }
         
@@ -218,12 +232,14 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
             self.firstLoadAccuracyCount += 1
             trackPosition(locationToZoom: location!, shouldAnimate: false)
             
-            //Clear the Determining Location label and wheel, and show the user position
-            self.determineLocationLabel.text = ""
-            self.determineLocationWheel.stopAnimating()
-            self.mapView.showsUserLocation = true
             
             if(self.firstLoadAccuracyCount > 3) {   //Wait until we've gotten a few points before tracking positions
+            
+                //Clear the Determining Location label and wheel, and show the user position
+                self.determineLocationLabel.text = ""
+                self.determineLocationWheel.stopAnimating()
+                self.mapView.showsUserLocation = true
+            
                 self.isFirstLoad = false
                 self.locations.append(location!)                    //Save the first position
                 startTime = NSDate.timeIntervalSinceReferenceDate   //Set the start time to here
