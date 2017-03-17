@@ -14,6 +14,7 @@ class StartScreen: UIViewController {
     
     
     @IBOutlet weak var startScreenBackground: UIImageView!
+    @IBOutlet weak var riseButton: UIButton!
     
     //Called when the view loads
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class StartScreen: UIViewController {
         //Draw the background image based on the current stage
         self.startScreenBackground.image = getStageImage(stageNumber: Globals.treeStage)
         
+        self.riseButton.layer.cornerRadius = 4  //Bevel that button
         
     }
     
