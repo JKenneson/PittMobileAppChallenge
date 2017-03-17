@@ -10,6 +10,7 @@
 		FC3162861E6E32D900C89BAB /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3162851E6E32D900C89BAB /* Globals.swift */; };
 		FC722F651E7A33E500D24D33 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC722F641E7A33E400D24D33 /* Keys.swift */; };
 		FC722F691E7A3A6300D24D33 /* TreeStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC722F681E7A3A6300D24D33 /* TreeStatsViewController.swift */; };
+		FC722F6B1E7C4C0200D24D33 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC722F6A1E7C4C0200D24D33 /* StartScreen.swift */; };
 		FC8301901E55434D008BFAC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC83018F1E55434D008BFAC8 /* AppDelegate.swift */; };
 		FC8301921E55434D008BFAC8 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8301911E55434D008BFAC8 /* MapController.swift */; };
 		FC8301951E55434D008BFAC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC8301931E55434D008BFAC8 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		FC3162851E6E32D900C89BAB /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		FC722F641E7A33E400D24D33 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FC722F681E7A3A6300D24D33 /* TreeStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TreeStatsViewController.swift; path = ../TreeStatsViewController.swift; sourceTree = "<group>"; };
+		FC722F6A1E7C4C0200D24D33 /* StartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		FC83018C1E55434D008BFAC8 /* RISE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RISE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC83018F1E55434D008BFAC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC8301911E55434D008BFAC8 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				FC83018F1E55434D008BFAC8 /* AppDelegate.swift */,
 				FC3162851E6E32D900C89BAB /* Globals.swift */,
 				FC722F641E7A33E400D24D33 /* Keys.swift */,
+				FC722F6A1E7C4C0200D24D33 /* StartScreen.swift */,
 				FC8301911E55434D008BFAC8 /* MapController.swift */,
 				FC8301AF1E6B2B37008BFAC8 /* MainMenu.swift */,
 				FC8301931E55434D008BFAC8 /* Main.storyboard */,
@@ -218,6 +221,7 @@
 				FC3162861E6E32D900C89BAB /* Globals.swift in Sources */,
 				FC8301921E55434D008BFAC8 /* MapController.swift in Sources */,
 				FC722F691E7A3A6300D24D33 /* TreeStatsViewController.swift in Sources */,
+				FC722F6B1E7C4C0200D24D33 /* StartScreen.swift in Sources */,
 				FC8301B01E6B2B37008BFAC8 /* MainMenu.swift in Sources */,
 				FC8301901E55434D008BFAC8 /* AppDelegate.swift in Sources */,
 				FC722F651E7A33E500D24D33 /* Keys.swift in Sources */,

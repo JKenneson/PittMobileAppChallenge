@@ -223,7 +223,7 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         
         let location = readLocations.last
         
-        print(location!.horizontalAccuracy)
+        //print(location!.horizontalAccuracy)
         if(location!.horizontalAccuracy > 100.0) {   //Don't save any points that are not accurate enough
             return
         }

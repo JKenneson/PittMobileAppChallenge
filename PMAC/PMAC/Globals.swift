@@ -34,7 +34,8 @@ class Globals {
         Globals.totalUserCO2Saved += amountOfCO2ToAdd
         Globals.treeCO2Saved += amountOfCO2ToAdd
         
-        print("Tree CO2 Saved: \(Globals.treeCO2Saved), Total CO2 Saved: \(Globals.totalUserCO2Saved)")
+        let printString = String(format: "Tree CO2 Saved: %.2f, Total CO2 Saved: %.2f", Globals.treeCO2Saved, Globals.totalUserCO2Saved)
+        print("\(printString)")
         
         if(Globals.treeCO2Saved < Globals.stage1) {         //0-7 is stage 1
             Globals.treeStage = 1
