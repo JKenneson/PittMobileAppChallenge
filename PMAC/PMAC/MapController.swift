@@ -66,6 +66,7 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
 
         //Setup the map view
         self.mapView.delegate = self
+        self.mapView.showsUserLocation = true
         
         //Setup the Determine Location Wheel
         self.determineLocationWheel.startAnimating()
@@ -74,6 +75,10 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         //Setup the timer
         let aSelector : Selector = #selector(MapController.updateTime)
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
+        
+        //Setup the update label button
+        let bSelector : Selector = #selector(MapController.updateLabels)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: bSelector, userInfo: nil, repeats: true)
         
         //To stop the timer:
         /*
@@ -223,8 +228,8 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         
         let location = readLocations.last
         
-        //print(location!.horizontalAccuracy)
-        if(location!.horizontalAccuracy > 100.0) {   //Don't save any points that are not accurate enough
+        print("Location accuracy: \(location!.horizontalAccuracy)")
+        if(location!.horizontalAccuracy > 65.0) {   //Don't save any points that are not accurate enough
             return
         }
         
@@ -238,7 +243,6 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
                 //Clear the Determining Location label and wheel, and show the user position
                 self.determineLocationLabel.text = ""
                 self.determineLocationWheel.stopAnimating()
-                self.mapView.showsUserLocation = true
             
                 self.isFirstLoad = false
                 self.locations.append(location!)                    //Save the first position
@@ -261,12 +265,11 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         }
         
         
-        //If we have at least 2 points, start drawing the route and updating labels
+        //If we have at least 2 points, start drawing the route
         if(self.locations.count >= 2) {
             drawRoute()
             
-            updateLabels()
-            
+            //updateLabels()
         }
         
         //print("Total Distance \(totalDistance)")
@@ -328,6 +331,7 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         
         //concatenate minuets, seconds and milliseconds as assign it to the UILabel
         displayTimeLabel.text = "\(strMinutes):\(strSeconds).\(strFraction)"
+
     }
     
     
