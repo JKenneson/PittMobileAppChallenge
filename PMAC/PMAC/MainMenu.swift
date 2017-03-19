@@ -26,6 +26,9 @@ class MainMenu: UIViewController {
     
     //Called when the view loads
     override func viewDidLoad() {
+        //If we make it to the menu, the user has loaded the app at least once
+        Globals.systemFirstLoad = false
+        
         super.viewDidLoad()
     
         //Bevel the buttons

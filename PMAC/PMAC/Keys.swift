@@ -18,4 +18,5 @@ struct Keys {
     static let treeCO2Saved = "treeCO2Saved"
     static let treeStage = "treeStage"
     static let lastTimeAppOpened = "lastTimeAppOpened"
+    static let systemFirstLoad = "systemFirstLoad"
 }

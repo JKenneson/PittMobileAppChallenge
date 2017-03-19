@@ -10,7 +10,7 @@
 		FC3162861E6E32D900C89BAB /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3162851E6E32D900C89BAB /* Globals.swift */; };
 		FC722F651E7A33E500D24D33 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC722F641E7A33E400D24D33 /* Keys.swift */; };
 		FC722F691E7A3A6300D24D33 /* TreeStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC722F681E7A3A6300D24D33 /* TreeStatsViewController.swift */; };
-		FC722F6B1E7C4C0200D24D33 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC722F6A1E7C4C0200D24D33 /* StartScreen.swift */; };
+		FC722F6B1E7C4C0200D24D33 /* StartScreen1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC722F6A1E7C4C0200D24D33 /* StartScreen1.swift */; };
 		FC722F6F1E7DFD4F00D24D33 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC722F6E1E7DFD4F00D24D33 /* HealthKit.framework */; };
 		FC722F711E7DFD9900D24D33 /* HealthKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC722F701E7DFD9900D24D33 /* HealthKitHelper.swift */; };
 		FC722F731E7E26AA00D24D33 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC722F721E7E26AA00D24D33 /* InformationViewController.swift */; };
@@ -37,7 +37,7 @@
 		FC3162851E6E32D900C89BAB /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		FC722F641E7A33E400D24D33 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		FC722F681E7A3A6300D24D33 /* TreeStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TreeStatsViewController.swift; path = ../TreeStatsViewController.swift; sourceTree = "<group>"; };
-		FC722F6A1E7C4C0200D24D33 /* StartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
+		FC722F6A1E7C4C0200D24D33 /* StartScreen1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreen1.swift; sourceTree = "<group>"; };
 		FC722F6C1E7DFD4E00D24D33 /* RISE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RISE.entitlements; sourceTree = SOURCE_ROOT; };
 		FC722F6E1E7DFD4F00D24D33 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		FC722F701E7DFD9900D24D33 /* HealthKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitHelper.swift; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 				FC3162851E6E32D900C89BAB /* Globals.swift */,
 				FC722F641E7A33E400D24D33 /* Keys.swift */,
 				FC722F701E7DFD9900D24D33 /* HealthKitHelper.swift */,
-				FC722F6A1E7C4C0200D24D33 /* StartScreen.swift */,
+				FC722F6A1E7C4C0200D24D33 /* StartScreen1.swift */,
 				FC8301911E55434D008BFAC8 /* MapController.swift */,
 				FC8301AF1E6B2B37008BFAC8 /* MainMenu.swift */,
 				FC8301931E55434D008BFAC8 /* Main.storyboard */,
@@ -246,7 +246,7 @@
 				FC3162861E6E32D900C89BAB /* Globals.swift in Sources */,
 				FC8301921E55434D008BFAC8 /* MapController.swift in Sources */,
 				FC722F691E7A3A6300D24D33 /* TreeStatsViewController.swift in Sources */,
-				FC722F6B1E7C4C0200D24D33 /* StartScreen.swift in Sources */,
+				FC722F6B1E7C4C0200D24D33 /* StartScreen1.swift in Sources */,
 				FC8301B01E6B2B37008BFAC8 /* MainMenu.swift in Sources */,
 				FC8301901E55434D008BFAC8 /* AppDelegate.swift in Sources */,
 				FC722F711E7DFD9900D24D33 /* HealthKitHelper.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="33m-BT-XIz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -192,10 +192,10 @@
             </objects>
             <point key="canvasLocation" x="1088.8" y="125.4872563718141"/>
         </scene>
-        <!--Start Screen-->
+        <!--Start Screen1-->
         <scene sceneID="lMB-rd-YZd">
             <objects>
-                <viewController id="33m-BT-XIz" customClass="StartScreen" customModule="RISE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="startScreen1ID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="33m-BT-XIz" customClass="StartScreen1" customModule="RISE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qQv-jt-gcK"/>
                         <viewControllerLayoutGuide type="bottom" id="ukY-Dm-3Hk"/>
@@ -587,6 +587,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="f8e-e1-345"/>
+        <segue reference="5af-GZ-7tU"/>
     </inferredMetricsTieBreakers>
 </document>
