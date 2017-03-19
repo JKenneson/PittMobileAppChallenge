@@ -10,7 +10,7 @@ import UIKit
 
 class MainMenu: UIViewController {
     
-    let myHealthKit = HealthKitHelper()
+    let myHealthKit = HealthKitHelper()         //Retrieve HealthKitData
     
     //MARK: IBOutlets
     @IBOutlet weak var newRunButton: UIButton!
@@ -26,8 +26,6 @@ class MainMenu: UIViewController {
     
     //Called when the view loads
     override func viewDidLoad() {
-        //If we make it to the menu, the user has loaded the app at least once
-        Globals.systemFirstLoad = false
         
         super.viewDidLoad()
     
@@ -71,12 +69,7 @@ class MainMenu: UIViewController {
         self.mainMenuImageView.image = getStageImage(stageNumber: Globals.treeStage)        //Update the main screen
         updateEXPBar()                                                                      //Update the Exp bar and label
         
-        //Also testing getting distance traveled from health kit
-        if(myHealthKit.checkAuthorization() == true) {
-            myHealthKit.recentDistance() { distanceTraveled, error in
-                print("Distance traveled from health kit: \(distanceTraveled)")
-            };
-        }
+        
         
     }
 ///*********************************************************************************************************///

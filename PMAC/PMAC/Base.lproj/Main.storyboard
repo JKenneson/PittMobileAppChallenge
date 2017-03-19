@@ -241,6 +241,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="riseButtonPushed:" destination="33m-BT-XIz" eventType="touchUpInside" id="e0W-6f-vw5"/>
                                     <segue destination="2R1-qT-VGK" kind="presentation" modalTransitionStyle="crossDissolve" id="5af-GZ-7tU"/>
                                 </connections>
                             </button>
@@ -254,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04i-C1-m2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-724" y="121.88905547226388"/>
+            <point key="canvasLocation" x="-1062" y="-278"/>
         </scene>
         <!--Main Menu-->
         <scene sceneID="3Ii-w2-AqN">
@@ -364,6 +365,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="in4-uw-rHT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="88.799999999999997" y="124.58770614692655"/>
+        </scene>
+        <!--Start Screen2-->
+        <scene sceneID="yDF-uo-yhZ">
+            <objects>
+                <viewController storyboardIdentifier="startScreen2ID" id="Mfn-2U-6un" customClass="StartScreen2" customModule="RISE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lCD-VK-Ga0"/>
+                        <viewControllerLayoutGuide type="bottom" id="zvA-ah-mOt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sYf-LZ-gh4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N3q-lb-8KU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="674"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome back.  Since you were last here, you've walked x.xx miles, saving y.yy lbs of CO2." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="gmn-rh-BcN">
+                                <rect key="frame" x="16" y="28" width="343" height="135"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1R1-rU-MFt">
+                                <rect key="frame" x="146" y="177" width="83" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.15613526859999999" green="0.94820790840000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="26"/>
+                                <size key="titleShadowOffset" width="1" height="0.0"/>
+                                <state key="normal" title="RISE">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2R1-qT-VGK" kind="presentation" modalTransitionStyle="crossDissolve" id="uj0-kU-537"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="riseButton" destination="1R1-rU-MFt" id="MHK-yZ-uip"/>
+                        <outlet property="startScreenBackground" destination="N3q-lb-8KU" id="Tjh-hh-WkP"/>
+                        <outlet property="textLabel" destination="gmn-rh-BcN" id="JeG-LR-zsN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZfV-4f-pak" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1063.2" y="435.83208395802103"/>
         </scene>
         <!--Tree Stats View Controller-->
         <scene sceneID="RWo-si-0Z2">
@@ -587,6 +638,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5af-GZ-7tU"/>
+        <segue reference="uj0-kU-537"/>
     </inferredMetricsTieBreakers>
 </document>

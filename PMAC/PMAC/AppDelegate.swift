@@ -17,15 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        //Decide which screen to show on load
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let exampleViewController: StartScreen1 = mainStoryboard.instantiateViewController(withIdentifier: "startScreen1ID") as! StartScreen1
-        
-        self.window?.rootViewController = exampleViewController
-        self.window?.makeKeyAndVisible()
-        
-        
         UIApplication.shared.isIdleTimerDisabled = true             //Stop the phone from turning off the screen
         
         //Recover the stored user data
@@ -47,7 +38,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("App Last opened: \(Globals.lastTimeAppOpened)")
         }
         if let systemFirstLoadBool = defaults.string(forKey: Keys.systemFirstLoad) {
-            Globals.systemFirstLoad = Bool(systemFirstLoadBool)!
+            Globals.systemFirstLoad = Int(systemFirstLoadBool)!
+        }
+        
+        //Decide which screen to show on load
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //Pick which view to show based on if we are in first load state or not
+        if(Globals.systemFirstLoad == 1) {
+            let exampleViewController: StartScreen1 = mainStoryboard.instantiateViewController(withIdentifier: "startScreen1ID") as! StartScreen1
+            self.window?.rootViewController = exampleViewController
+            self.window?.makeKeyAndVisible()
+            
+        }
+        else {
+            let exampleViewController: StartScreen2 = mainStoryboard.instantiateViewController(withIdentifier: "startScreen2ID") as! StartScreen2
+            self.window?.rootViewController = exampleViewController
+            self.window?.makeKeyAndVisible()
+            
         }
         
         return true
@@ -69,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.setValue(Globals.treeCO2Saved, forKey: Keys.treeCO2Saved)
         defaults.setValue(Globals.treeStage, forKey: Keys.treeStage)
         defaults.setValue(NSDate(), forKey: Keys.lastTimeAppOpened)
-        defaults.set(Globals.systemFirstLoad, forKey: Keys.systemFirstLoad)
+        defaults.setValue(Globals.systemFirstLoad, forKey: Keys.systemFirstLoad)
         defaults.synchronize()
 
     }
@@ -93,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.setValue(Globals.treeCO2Saved, forKey: Keys.treeCO2Saved)
         defaults.setValue(Globals.treeStage, forKey: Keys.treeStage)
         defaults.setValue(NSDate(), forKey: Keys.lastTimeAppOpened)
-        defaults.set(Globals.systemFirstLoad, forKey: Keys.systemFirstLoad)
+        defaults.setValue(Globals.systemFirstLoad, forKey: Keys.systemFirstLoad)
         defaults.synchronize()
 
         

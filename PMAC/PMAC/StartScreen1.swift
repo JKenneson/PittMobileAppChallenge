@@ -20,7 +20,7 @@ class StartScreen1: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Draw the background image based on the current stage
+        //Draw the background image for the first stage only
         self.startScreenBackground.image = UIImage(named: "1st stage")!
         
         self.riseButton.layer.cornerRadius = 4  //Bevel that button
@@ -33,5 +33,10 @@ class StartScreen1: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func riseButtonPushed(_ sender: Any) {
+        //Set first load to false so we don't show this screen again
+        Globals.systemFirstLoad = 0
+    }
     
 }

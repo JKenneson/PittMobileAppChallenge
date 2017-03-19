@@ -19,7 +19,7 @@ class Globals {
     static var treeStage: Int = 1                               //The stage we are currently on for our tree
     
     static var lastTimeAppOpened:NSDate = NSDate()              //Saving when the app was last opened for HealthKit
-    static var systemFirstLoad:Bool = true                      //A check if its the first time we are running the app
+    static var systemFirstLoad:Int = 1                          //A check if its the first time we are running the app
     
     //The maximum amount of CO2 saved to finish each stage
     static let stage1:Double = 7.0
