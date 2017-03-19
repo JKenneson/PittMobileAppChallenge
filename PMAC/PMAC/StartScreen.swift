@@ -24,6 +24,8 @@ class StartScreen: UIViewController {
         self.startScreenBackground.image = getStageImage(stageNumber: Globals.treeStage)
         
         self.riseButton.layer.cornerRadius = 4  //Bevel that button
+        self.riseButton.layer.borderWidth = 1
+        self.riseButton.layer.borderColor = UIColor.black.cgColor
         
     }
     

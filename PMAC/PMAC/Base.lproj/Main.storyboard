@@ -222,8 +222,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Bhu-EW-Xlu">
+                                <rect key="frame" x="16" y="182" width="343" height="228"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <string key="text">Your goal is to utilize alternative modes of transportation, such as walking, running, or biking in order to cut back on CO2 emmissions. Here is a seed for you to grow, save 48 lbs of CO2 to fully mature it.  Reduce your Impact, Save the Earth.</string>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghU-Pw-wBW">
-                                <rect key="frame" x="151" y="425" width="72" height="42"/>
+                                <rect key="frame" x="146" y="425" width="83" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.15613526859999999" green="0.94820790840000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="26"/>
@@ -236,14 +244,6 @@
                                     <segue destination="2R1-qT-VGK" kind="presentation" modalTransitionStyle="crossDissolve" id="5af-GZ-7tU"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Bhu-EW-Xlu">
-                                <rect key="frame" x="16" y="182" width="343" height="228"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <string key="text">Your goal is to utilize alternative modes of transportation, such as walking, running, or biking in order to cut back on CO2 emmissions. Here is a seed for you to grow, save 48 lbs of CO2 to fully mature it.  Reduce your Impact, Save the Earth.</string>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="23"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -333,6 +333,17 @@
                                     <action selector="testButtonPushed:" destination="2R1-qT-VGK" eventType="touchUpInside" id="Ndv-pS-COy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLS-Ie-Rox">
+                                <rect key="frame" x="320" y="608" width="39" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.15613526859999999" green="0.94820790840000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="27"/>
+                                <size key="titleShadowOffset" width="1" height="0.0"/>
+                                <state key="normal" title="i">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -340,6 +351,7 @@
                     <connections>
                         <outlet property="expBar" destination="657-QA-ayQ" id="QgX-Ij-kLZ"/>
                         <outlet property="expLabel" destination="ENa-A4-gOR" id="hU9-uK-D4D"/>
+                        <outlet property="infoButton" destination="MLS-Ie-Rox" id="2zF-2b-OHk"/>
                         <outlet property="mainMenuImageView" destination="hiF-ac-Apq" id="Cvj-fa-enq"/>
                         <outlet property="newRunButton" destination="uQf-zM-Xx6" id="Qed-Xi-KO2"/>
                         <outlet property="testButton" destination="F84-rc-fo1" id="bci-8L-5ES"/>
@@ -440,6 +452,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="f8e-e1-345"/>
+        <segue reference="5af-GZ-7tU"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,6 +18,7 @@ class MainMenu: UIViewController {
     @IBOutlet weak var mainMenuImageView: UIImageView!
     @IBOutlet weak var expLabel: UILabel!
     @IBOutlet weak var expBar: UIProgressView!
+    @IBOutlet weak var infoButton: UIButton!
     
     @IBOutlet weak var testButton: UIButton!
     
@@ -31,6 +32,18 @@ class MainMenu: UIViewController {
         self.newRunButton.layer.cornerRadius = 4
         self.treeStatsButton.layer.cornerRadius = 4
         self.testButton.layer.cornerRadius = 4
+        self.infoButton.layer.cornerRadius = 0.5 * self.infoButton.bounds.width         //Circular info button
+        self.infoButton.clipsToBounds = true
+        
+        //Border the buttons
+        self.infoButton.layer.borderWidth = 1
+        self.infoButton.layer.borderColor = UIColor.black.cgColor
+        self.newRunButton.layer.borderWidth = 1
+        self.newRunButton.layer.borderColor = UIColor.black.cgColor
+        self.treeStatsButton.layer.borderWidth = 1
+        self.treeStatsButton.layer.borderColor = UIColor.black.cgColor
+        self.testButton.layer.borderWidth = 1
+        self.testButton.layer.borderColor = UIColor.black.cgColor
     
         //Draw the background image based on the current stage
         self.mainMenuImageView.image = getStageImage(stageNumber: Globals.treeStage)

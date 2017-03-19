@@ -58,6 +58,16 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         freeRoamButton.layer.cornerRadius = 4
         endRunButton.layer.cornerRadius = 4
         
+        //Border the buttons
+        self.currentPositionButton.layer.borderWidth = 1
+        self.currentPositionButton.layer.borderColor = UIColor.black.cgColor
+        self.entireRouteButton.layer.borderWidth = 1
+        self.entireRouteButton.layer.borderColor = UIColor.black.cgColor
+        self.freeRoamButton.layer.borderWidth = 1
+        self.freeRoamButton.layer.borderColor = UIColor.black.cgColor
+        self.endRunButton.layer.borderWidth = 1
+        self.endRunButton.layer.borderColor = UIColor.black.cgColor
+        
         //Setup the location manager
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -229,7 +239,7 @@ class MapController: UIViewController, MKMapViewDelegate, CLLocationManagerDeleg
         let location = readLocations.last
         
         print("Location accuracy: \(location!.horizontalAccuracy)")
-        if(location!.horizontalAccuracy > 65.0) {   //Don't save any points that are not accurate enough
+        if(location!.horizontalAccuracy > 50.0) {   //Don't save any points that are not accurate enough
             return
         }
         
