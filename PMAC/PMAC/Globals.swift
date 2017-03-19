@@ -11,12 +11,14 @@ import Foundation
 
 //MARK: System-wide variables and mutators
 class Globals {
+    
     static var totalUserCO2Saved: Double = 0.0                  //The total amount of CO2 saved by the user
     static var totalUserTreesSaved: Int = 0                     //The total number of completed trees
     
     static var treeCO2Saved: Double = 0.0                       //The tree specific amount of CO2 saved
     static var treeStage: Int = 1                               //The stage we are currently on for our tree
     
+    static var lastTimeAppOpened:NSDate = NSDate()              //Saving when the app was last opened for HealthKit
     
     //The maximum amount of CO2 saved to finish each stage
     static let stage1:Double = 7.0

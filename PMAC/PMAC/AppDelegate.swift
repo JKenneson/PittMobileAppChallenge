@@ -33,6 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let treeStageString = defaults.string(forKey: Keys.treeStage) {
             Globals.treeStage = Int(treeStageString)!
         }
+        if let lastTimeAppOpenedDate = defaults.object(forKey: Keys.lastTimeAppOpened) as? NSDate {
+            Globals.lastTimeAppOpened = lastTimeAppOpenedDate
+            print("App Last opened: \(Globals.lastTimeAppOpened)")
+        }
         
         return true
     }
@@ -52,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.setValue(Globals.totalUserTreesSaved, forKey: Keys.totalUserTreesSaved)
         defaults.setValue(Globals.treeCO2Saved, forKey: Keys.treeCO2Saved)
         defaults.setValue(Globals.treeStage, forKey: Keys.treeStage)
+        defaults.setValue(NSDate(), forKey: Keys.lastTimeAppOpened)
         defaults.synchronize()
 
     }
@@ -74,6 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.setValue(Globals.totalUserTreesSaved, forKey: Keys.totalUserTreesSaved)
         defaults.setValue(Globals.treeCO2Saved, forKey: Keys.treeCO2Saved)
         defaults.setValue(Globals.treeStage, forKey: Keys.treeStage)
+        defaults.setValue(NSDate(), forKey: Keys.lastTimeAppOpened)
         defaults.synchronize()
 
         
