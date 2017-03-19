@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        UIApplication.shared.isIdleTimerDisabled = true             //Stop the phone from turning off the screen
+        
         //Recover the stored user data
         let defaults = UserDefaults.standard
         if let totalUserCO2SavedString = defaults.string(forKey: Keys.totalUserCO2Saved) {
