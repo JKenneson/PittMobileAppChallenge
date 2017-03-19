@@ -1,43 +1,35 @@
 //
-//  TreeStatsViewController.swift
+//  InformationViewController.swift
 //  RISE
 //
-//  Created by Jonathan Kenneson on 3/15/17.
+//  Created by Jonathan Kenneson on 3/18/17.
 //  Copyright © 2017 Kenneson Studios. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class TreeStatsViewController: UIViewController {
-
-    //MARK: Outlets
-    @IBOutlet weak var treeStatsView: UIView!
-    @IBOutlet weak var closeButton: UIButton!
+class InformationViewController: UIViewController {
     
-    @IBOutlet weak var totalCO2SavedLabel: UILabel!
-    @IBOutlet weak var totalTreesSavedLabel: UILabel!
-    @IBOutlet weak var CO2ForTreeLabel: UILabel!
+    //MARK: Outlets
+    @IBOutlet weak var infoScreenView: UIView!
+    @IBOutlet weak var closeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //Set the background to slightly transparent to still see the menu
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         
         //Bevels, so nice
-        self.treeStatsView.layer.cornerRadius = 4
+        self.infoScreenView.layer.cornerRadius = 4
         self.closeButton.layer.cornerRadius = 4
         self.closeButton.layer.borderWidth = 1
         self.closeButton.layer.borderColor = UIColor.black.cgColor
         
-        //Setting the text for the labels according to the values in the Globals class
-        self.totalCO2SavedLabel.text = String(format: "%.2f lbs", Globals.totalUserCO2Saved)
-        self.totalTreesSavedLabel.text = "\(Globals.totalUserTreesSaved)"
-        self.CO2ForTreeLabel.text = String(format: "%.2f lbs", Globals.treeCO2Saved)
-        
         self.showAnimate()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,11 +39,11 @@ class TreeStatsViewController: UIViewController {
     
     
     ///Close the tree stats popup view
-    @IBAction func closePopUp(_ sender: Any) {
+    @IBAction func closePopUp(_ sender: UIButton) {
         self.removeAnimate()
         //self.view.removeFromSuperview()
     }
-
+    
     
     
     //MARK: Animation Methods

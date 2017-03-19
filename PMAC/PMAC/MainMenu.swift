@@ -92,6 +92,18 @@ class MainMenu: UIViewController {
 
     }
     
+    /// Called when the info button is pushed
+    /// - Paramter sender: the info button
+    @IBAction func infoButtonPushed(_ sender: Any) {
+        //Create a popup view for the info screen
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "infoScreenPopUpID") as! InformationViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+
+        
+    }
     
     
     
