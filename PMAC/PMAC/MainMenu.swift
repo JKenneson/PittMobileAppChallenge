@@ -10,6 +10,8 @@ import UIKit
 
 class MainMenu: UIViewController {
     
+    let myHealthKit = HealthKitHelper()
+    
     //MARK: IBOutlets
     @IBOutlet weak var newRunButton: UIButton!
     @IBOutlet weak var treeStatsButton: UIButton!
@@ -52,6 +54,14 @@ class MainMenu: UIViewController {
         
         self.mainMenuImageView.image = getStageImage(stageNumber: Globals.treeStage)        //Update the main screen
         updateEXPBar()                                                                      //Update the Exp bar and label
+        
+        //Also testing getting distance traveled from health kit
+        if(myHealthKit.checkAuthorization() == true) {
+            myHealthKit.recentDistance() { distanceTraveled, error in
+                print("Distance traveled from health kit: \(distanceTraveled)")
+            };
+        }
+        
     }
 ///*********************************************************************************************************///
     
