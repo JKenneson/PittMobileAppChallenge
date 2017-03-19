@@ -14,6 +14,11 @@ class InformationViewController: UIViewController {
     //MARK: Outlets
     @IBOutlet weak var infoScreenView: UIView!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    
+    @IBOutlet weak var EPAButton: UIButton!
+    @IBOutlet weak var tempIncreaseButton: UIButton!
+    @IBOutlet weak var forestFactsButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +29,26 @@ class InformationViewController: UIViewController {
         //Bevels, so nice
         self.infoScreenView.layer.cornerRadius = 4
         self.closeButton.layer.cornerRadius = 4
+        self.EPAButton.layer.cornerRadius = 4
+        self.tempIncreaseButton.layer.cornerRadius = 4
+        self.forestFactsButton.layer.cornerRadius = 4
+        self.resetButton.layer.cornerRadius = 4
+        
+        //Borders
         self.closeButton.layer.borderWidth = 1
         self.closeButton.layer.borderColor = UIColor.black.cgColor
+        self.resetButton.layer.borderWidth = 1
+        self.resetButton.layer.borderColor = UIColor.black.cgColor
+        self.EPAButton.layer.borderWidth = 1
+        self.EPAButton.layer.borderColor = UIColor.black.cgColor
+        self.tempIncreaseButton.layer.borderWidth = 1
+        self.tempIncreaseButton.layer.borderColor = UIColor.black.cgColor
+        self.forestFactsButton.layer.borderWidth = 1
+        self.forestFactsButton.layer.borderColor = UIColor.black.cgColor
+        
+        //Set the scale of the buttons
+        self.EPAButton.titleLabel?.minimumScaleFactor = 0.5;
+        self.EPAButton.titleLabel?.adjustsFontSizeToFitWidth = true;
         
         self.showAnimate()
     }
@@ -36,6 +59,8 @@ class InformationViewController: UIViewController {
     }
     
     
+    @IBAction func resetButtonPushed(_ sender: Any) {
+    }
     
     
     ///Close the tree stats popup view
@@ -44,6 +69,22 @@ class InformationViewController: UIViewController {
         //self.view.removeFromSuperview()
     }
     
+    //MARK: Safari Links
+    
+    @IBAction func EPAButtonPushed(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "https://www.epa.gov/sites/production/files/2016-02/documents/420f14040a.pdf")!, options: [:], completionHandler: nil)
+        
+    }
+    
+    @IBAction func tempButtonPushed(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "https://phys.org/news/2016-01-temperature-co2-emissions.html")!, options: [:], completionHandler: nil)
+        
+    }
+    
+    @IBAction func forestFactsButtonPushed(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "http://www.americanforests.org/explore-forests/forest-facts/")!, options: [:], completionHandler: nil)
+        
+    }
     
     
     //MARK: Animation Methods
