@@ -48,11 +48,15 @@ class HealthKitHelper {
         // The type of data we are requesting (walking and running distance traveled)
         let type = HKSampleType.quantityType(forIdentifier: .distanceWalkingRunning)
         
+        /*
         let date = NSDate() as Date
         let cal = Calendar(identifier: Calendar.Identifier.gregorian)
         let startOfDay = cal.startOfDay(for: date)
-        
-        let predicate = HKQuery.predicateForSamples(withStart: startOfDay as Date, end: date as Date, options: .strictStartDate)
+        */
+        let endDate = NSDate() as Date
+        let startDate = Globals.lastTimeAppOpened as Date
+ 
+        let predicate = HKQuery.predicateForSamples(withStart: startDate as Date, end: endDate as Date, options: .strictStartDate)
         
         let query = HKStatisticsQuery(quantityType: type!, quantitySamplePredicate: predicate, options: [.cumulativeSum]) { (query, statistics, error) in
             var value: Double = 0
