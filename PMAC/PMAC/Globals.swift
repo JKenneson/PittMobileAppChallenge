@@ -102,4 +102,18 @@ class Globals {
         }
     }
     
+    
+    
+    /************************************************   WARNING!!!  ******************************************/
+    ///This function resets all user data, only call if you are sure you want to reset
+    static func resetAll() {
+        Globals.systemFirstLoad = 1
+        Globals.totalUserCO2Saved = 0
+        Globals.totalUserTreesSaved = 0
+        Globals.treeCO2Saved = 0
+        Globals.treeStage = 1
+        Globals.lastTimeAppOpened = NSDate()
+        
+    }
+    
 }

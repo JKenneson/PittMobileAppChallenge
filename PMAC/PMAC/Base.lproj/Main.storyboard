@@ -600,6 +600,7 @@
                                         </state>
                                         <connections>
                                             <action selector="resetButtonPushed:" destination="Lbq-Zj-BCg" eventType="touchUpInside" id="tKq-xk-21a"/>
+                                            <segue destination="33m-BT-XIz" kind="presentation" modalTransitionStyle="crossDissolve" id="rGb-PJ-VWT"/>
                                         </connections>
                                     </button>
                                 </subviews>

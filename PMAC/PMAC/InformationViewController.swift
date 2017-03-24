@@ -58,12 +58,11 @@ class InformationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    ///This functionality needs to be changed in the future - for now it just increments the CO2
+    ///WARNING!!! This function will reset all user data, with great power comes great responsibility
     ///*********************************************************************************************************///
     @IBAction func resetButtonPushed(_ sender: Any) {
-        //Testing by adding to the CO2 every time button is clicked
-        Globals.incrementUserCO2(amountOfCO2ToAdd: 1)
-        
+        Globals.resetAll()
+        //self.view.removeFromSuperview()
     }
     ///*********************************************************************************************************///
     
