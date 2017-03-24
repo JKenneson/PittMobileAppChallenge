@@ -30,15 +30,20 @@ class StartScreen2: UIViewController {
             myHealthKit.recentDistance() { distanceTraveled, error in
                 print("Distance traveled from health kit: \(distanceTraveled)")
                 distanceTraveledWhileClosed = distanceTraveled
-            };
+                
+                //Increment the user CO2
+                let CO2SavedWhileClosed = distanceTraveledWhileClosed * self.poundsCO2SavedPerMile
+                Globals.incrementUserCO2(amountOfCO2ToAdd: CO2SavedWhileClosed)
+                
+                //Set the text appropriately
+                self.textLabel.text = String(format: "Welcome back.\nSince you were last here, you've\nwalked %.2f miles,\nsaving %.2f lbs of CO2. ", distanceTraveledWhileClosed, CO2SavedWhileClosed)
+            }
+        }
+        else {
+            //Set the text appropriately
+            self.textLabel.text = String(format: "Please authorize RISE to use HealthKit data to track your distance while not using this app")
         }
         
-        //Increment the user CO2
-        let CO2SavedWhileClosed = distanceTraveledWhileClosed * self.poundsCO2SavedPerMile
-        Globals.incrementUserCO2(amountOfCO2ToAdd: CO2SavedWhileClosed)
-        
-        //Set the text appropriately
-        self.textLabel.text = String(format: "Welcome back.\nSince you were last here, you've\nwalked %.2f miles,\nsaving %.2f lbs of CO2. ", distanceTraveledWhileClosed, CO2SavedWhileClosed)
         
         
         
@@ -47,6 +52,11 @@ class StartScreen2: UIViewController {
         self.riseButton.layer.cornerRadius = 4  //Bevel that button
         self.riseButton.layer.borderWidth = 1
         self.riseButton.layer.borderColor = UIColor.black.cgColor
+
+        
+        
+        //Save the new time for the next time the app gets opened
+        Globals.lastTimeAppOpened = NSDate()
         
     }
     

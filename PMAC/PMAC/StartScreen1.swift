@@ -37,6 +37,8 @@ class StartScreen1: UIViewController {
     @IBAction func riseButtonPushed(_ sender: Any) {
         //Set first load to false so we don't show this screen again
         Globals.systemFirstLoad = 0
+        Globals.lastTimeAppOpened = NSDate()
+        
     }
     
 }

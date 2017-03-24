@@ -77,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.setValue(Globals.totalUserTreesSaved, forKey: Keys.totalUserTreesSaved)
         defaults.setValue(Globals.treeCO2Saved, forKey: Keys.treeCO2Saved)
         defaults.setValue(Globals.treeStage, forKey: Keys.treeStage)
-        defaults.setValue(NSDate(), forKey: Keys.lastTimeAppOpened)
+        defaults.setValue(Globals.lastTimeAppOpened, forKey: Keys.lastTimeAppOpened)
         defaults.setValue(Globals.systemFirstLoad, forKey: Keys.systemFirstLoad)
         defaults.synchronize()
 
@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.setValue(Globals.totalUserTreesSaved, forKey: Keys.totalUserTreesSaved)
         defaults.setValue(Globals.treeCO2Saved, forKey: Keys.treeCO2Saved)
         defaults.setValue(Globals.treeStage, forKey: Keys.treeStage)
-        defaults.setValue(NSDate(), forKey: Keys.lastTimeAppOpened)
+        defaults.setValue(Globals.lastTimeAppOpened, forKey: Keys.lastTimeAppOpened)
         defaults.setValue(Globals.systemFirstLoad, forKey: Keys.systemFirstLoad)
         defaults.synchronize()
 
