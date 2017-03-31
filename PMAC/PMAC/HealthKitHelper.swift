@@ -54,7 +54,7 @@ class HealthKitHelper {
         //let startDate = cal.startOfDay(for: date)
  
         let endDate = NSDate() as Date
-        let startDate = Globals.lastTimeAppOpened as! Date
+        let startDate = Globals.lastTimeAppOpened! as Date
         
         print("Start date: \(startDate) End Date: \(endDate)")
  

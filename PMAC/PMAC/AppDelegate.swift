@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         if let lastTimeAppOpenedDate = defaults.object(forKey: Keys.lastTimeAppOpened) as? NSDate {
             Globals.lastTimeAppOpened = lastTimeAppOpenedDate
-            print("App Last opened: \(Globals.lastTimeAppOpened)")
+            print("App Last opened: \(String(describing: Globals.lastTimeAppOpened))")
         }
         if let systemFirstLoadBool = defaults.string(forKey: Keys.systemFirstLoad) {
             Globals.systemFirstLoad = Int(systemFirstLoadBool)!
